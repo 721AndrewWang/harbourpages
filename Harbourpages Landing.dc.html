@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E9E2D4; font-family: 'Figtree', sans-serif; }
+  a { color: #B4552A; text-decoration: none; }
+  a:hover { color: #8E3F1D; }
+</style>
+</helmet>
+
+<section style="display:flex; gap:48px; padding:48px 48px 0; align-items:flex-start;">
+
+<!-- ============ 3a — Demo site: The Harbour Cafe ============ -->
+<div id="3a" style="position:relative; width:1440px; flex:0 0 auto; box-shadow:0 24px 80px rgba(28,35,48,0.25);">
+  <div style="position:absolute; top:-36px; left:0; display:flex; align-items:center; gap:10px;">
+    <a href="#3a" style="display:inline-block; background:#1C2B3A; color:#F7F2E9; font:600 13px 'Figtree',sans-serif; padding:4px 12px; border-radius:999px;">3a</a>
+    <span style="font:500 13px 'Figtree',sans-serif; color:#5A5142;">Demo site · The Harbour Cafe</span>
+  </div>
+
+  <div data-screen-label="3a Demo Cafe Site" style="background:#F7F2E9; color:#22303F; overflow:hidden;">
+
+    <!-- Cafe nav -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 64px; border-bottom:1px solid #DDD2BC;">
+      <div style="display:flex; align-items:baseline; gap:10px;">
+        <span style="font:600 24px 'Cormorant Garamond',serif;">The Harbour <em style="color:#B4552A;">Cafe</em></span>
+        <span style="font:500 11px 'Figtree',sans-serif; letter-spacing:0.18em; color:#8A7E68; text-transform:uppercase;">Killarney, Co. Kerry</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:32px;">
+        <a href="#3a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Menu</a>
+        <a href="#3a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Hours</a>
+        <a href="#3a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Find us</a>
+        <a href="#3a" style="font:600 15px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:10px 22px; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Book a table</a>
+      </div>
+    </div>
+
+    <!-- Cafe hero -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; padding:72px 64px; align-items:center;">
+      <div>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#B4552A; margin-bottom:20px;">On the pier since 1987</div>
+        <h1 style="font:500 60px/1.1 'Cormorant Garamond',serif; margin:0 0 22px; color:#1C2B3A;">Good coffee, honest food, harbour views.</h1>
+        <p style="font:400 16px/1.7 'Figtree',sans-serif; color:#5A5142; margin:0 0 32px; max-width:32em;">Breakfast until noon, lunch until four, cake all day. Book a table or order takeaway — straight from us, no apps in between.</p>
+        <div style="display:flex; gap:14px;">
+          <a href="#3a" style="font:600 16px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:15px 30px; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Book a table</a>
+          <a href="#3a" style="font:600 16px 'Figtree',sans-serif; color:#1C2B3A; padding:15px 26px; border:1px solid #1C2B3A; border-radius:2px;" style-hover="background:#1C2B3A; color:#F7F2E9;">Order takeaway</a>
+        </div>
+      </div>
+      <figure style="margin:0; border:1px solid #DDD2BC; padding:14px; background:#FDFBF5;">
+        <div style="height:340px; background:repeating-linear-gradient(-45deg,#F1E9D8,#F1E9D8 10px,#EDE4D0 10px,#EDE4D0 20px); display:flex; align-items:center; justify-content:center;">
+          <span style="font:400 12px ui-monospace,monospace; color:#8A7E68;">[ photo — cafe interior, morning light ]</span>
+        </div>
+        <figcaption style="font:italic 400 14px 'Cormorant Garamond',serif; color:#8A7E68; padding:12px 4px 2px;">The front room, first pour of the day.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Menu -->
+    <div style="background:#F1E9D8; border-top:1px solid #DDD2BC; border-bottom:1px solid #DDD2BC; padding:72px 64px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:36px;">
+        <h2 style="font:600 38px 'Cormorant Garamond',serif; margin:0; color:#1C2B3A;">The menu</h2>
+        <span style="font:400 14px 'Figtree',sans-serif; color:#8A7E68;">Updated this morning — no PDFs here</span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 72px;">
+        <sc-for list="{{ menu }}" as="m" hint-placeholder-count="6">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; gap:24px; padding:16px 0; border-bottom:1px solid #DDD2BC;">
+            <div>
+              <div style="font:600 19px 'Cormorant Garamond',serif; color:#1C2B3A;">{{ m.name }}</div>
+              <div style="font:400 13.5px 'Figtree',sans-serif; color:#8A7E68; margin-top:3px;">{{ m.desc }}</div>
+            </div>
+            <span style="font:italic 500 19px 'Cormorant Garamond',serif; color:#B4552A; white-space:nowrap;">{{ m.price }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Hours & find us -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:56px; padding:72px 64px;">
+      <div>
+        <h3 style="font:600 26px 'Cormorant Garamond',serif; margin:0 0 18px; color:#1C2B3A;">Opening hours</h3>
+        <div style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid #EDE4D0; font:400 15px 'Figtree',sans-serif; color:#5A5142;"><span>Mon – Fri</span><span style="color:#1C2B3A; font-weight:600;">8:00 – 16:00</span></div>
+        <div style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid #EDE4D0; font:400 15px 'Figtree',sans-serif; color:#5A5142;"><span>Saturday</span><span style="color:#1C2B3A; font-weight:600;">9:00 – 17:00</span></div>
+        <div style="display:flex; justify-content:space-between; padding:9px 0; font:400 15px 'Figtree',sans-serif; color:#5A5142;"><span>Sunday</span><span style="color:#1C2B3A; font-weight:600;">10:00 – 15:00</span></div>
+      </div>
+      <div>
+        <h3 style="font:600 26px 'Cormorant Garamond',serif; margin:0 0 18px; color:#1C2B3A;">Find us</h3>
+        <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#5A5142; margin:0 0 14px;">2 Pier Road,<br>Killarney, Co. Kerry<br>V93 XY12</p>
+        <a href="#3a" style="font:600 14px 'Figtree',sans-serif; color:#B4552A; border-bottom:1px solid #B4552A; padding-bottom:2px;" style-hover="color:#8E3F1D;">065 123 4567</a>
+      </div>
+      <div style="height:220px; background:repeating-linear-gradient(-45deg,#F1E9D8,#F1E9D8 10px,#EDE4D0 10px,#EDE4D0 20px); border:1px solid #DDD2BC; display:flex; align-items:center; justify-content:center;">
+        <span style="font:400 12px ui-monospace,monospace; color:#8A7E68;">[ embedded map — pier road ]</span>
+      </div>
+    </div>
+
+    <!-- Booking band -->
+    <div style="background:#1C2B3A; color:#F7F2E9; padding:80px 64px; text-align:center;">
+      <h2 style="font:500 44px 'Cormorant Garamond',serif; margin:0 0 14px;">Book a table</h2>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#B9C2CC; margin:0 auto 40px; max-width:30em;">Booked directly with us — confirmed by text within the hour, no commission to anyone.</p>
+      <div style="display:flex; gap:14px; justify-content:center; max-width:820px; margin:0 auto;">
+        <input placeholder="Date" style="flex:1; font:400 15px 'Figtree',sans-serif; padding:14px 16px; border:1px solid rgba(247,242,233,0.25); background:#22303F; color:#F7F2E9;">
+        <input placeholder="Time" style="flex:1; font:400 15px 'Figtree',sans-serif; padding:14px 16px; border:1px solid rgba(247,242,233,0.25); background:#22303F; color:#F7F2E9;">
+        <input placeholder="Guests" style="flex:1; font:400 15px 'Figtree',sans-serif; padding:14px 16px; border:1px solid rgba(247,242,233,0.25); background:#22303F; color:#F7F2E9;">
+        <a href="#3a" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#F7F2E9; background:#B4552A; padding:16px 28px; white-space:nowrap; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Reserve</a>
+      </div>
+    </div>
+
+    <!-- Cafe footer -->
+    <div style="background:#15212D; color:#8FA0B0; display:flex; justify-content:space-between; align-items:center; padding:26px 64px; font:400 13.5px 'Figtree',sans-serif;">
+      <span style="font:600 17px 'Cormorant Garamond',serif; color:#F7F2E9;">The Harbour Cafe</span>
+      <a href="#2a" style="color:#D9A05B;" style-hover="color:#F7F2E9;">Site by HarbourPages — take direct bookings →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3b — Owner dashboard ============ -->
+<div id="3b" style="position:relative; width:1440px; flex:0 0 auto; box-shadow:0 24px 80px rgba(28,35,48,0.25);">
+  <div style="position:absolute; top:-36px; left:0; display:flex; align-items:center; gap:10px;">
+    <a href="#3b" style="display:inline-block; background:#1C2B3A; color:#F7F2E9; font:600 13px 'Figtree',sans-serif; padding:4px 12px; border-radius:999px;">3b</a>
+    <span style="font:500 13px 'Figtree',sans-serif; color:#5A5142;">Owner dashboard · foolproof backend</span>
+  </div>
+
+  <div data-screen-label="3b Owner Dashboard" style="background:#F7F2E9; color:#22303F; overflow:hidden;">
+
+    <!-- Dashboard top bar -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:18px 40px; background:#1C2B3A; color:#F7F2E9;">
+      <div style="display:flex; align-items:baseline; gap:12px;">
+        <span style="font:600 20px 'Cormorant Garamond',serif;">Harbour<span style="font-style:italic; color:#D9A05B;">Pages</span></span>
+        <span style="font:500 12px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#8FA0B0;">Dashboard · The Harbour Cafe</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:20px;">
+        <a href="#3a" style="font:600 14px 'Figtree',sans-serif; color:#D9A05B;" style-hover="color:#F7F2E9;">View my site →</a>
+        <div style="width:36px; height:36px; border-radius:50%; background:#B4552A; color:#F7F2E9; display:flex; align-items:center; justify-content:center; font:600 14px 'Figtree',sans-serif;">MK</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:240px 1fr;">
+      <!-- Sidebar -->
+      <div style="background:#F1E9D8; border-right:1px solid #DDD2BC; padding:28px 0; display:flex; flex-direction:column; gap:2px; min-height:760px;">
+        <sc-for list="{{ adminNav }}" as="n" hint-placeholder-count="6">
+          <a href="#3b" style="display:flex; justify-content:space-between; align-items:center; font:{{ n.font }} 'Figtree',sans-serif; color:{{ n.fg }}; background:{{ n.bg }}; padding:13px 28px; border-left:3px solid {{ n.bar }};" style-hover="color:#B4552A;">
+            <span>{{ n.name }}</span><span style="font:600 12px 'Figtree',sans-serif; color:#B4552A;">{{ n.badge }}</span>
+          </a>
+        </sc-for>
+        <div style="margin-top:auto; padding:20px 28px; font:400 12.5px/1.6 'Figtree',sans-serif; color:#8A7E68;">
+          Running on the free tier.<br><strong style="color:#1C2B3A;">€0 / month</strong> hosting.
+        </div>
+      </div>
+
+      <!-- Main -->
+      <div style="padding:36px 40px;">
+        <h1 style="font:500 36px 'Cormorant Garamond',serif; margin:0 0 6px; color:#1C2B3A;">Good morning, Mary.</h1>
+        <p style="font:400 14.5px 'Figtree',sans-serif; color:#8A7E68; margin:0 0 30px;">Everything you change here goes live in about a minute. There's no save button to forget — we save as you type.</p>
+
+        <!-- Today's bookings -->
+        <div style="background:#FDFBF5; border:1px solid #DDD2BC; margin-bottom:24px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 24px; border-bottom:1px solid #EDE4D0;">
+            <span style="font:600 20px 'Cormorant Garamond',serif; color:#1C2B3A;">Today's bookings</span>
+            <span style="font:400 13px 'Figtree',sans-serif; color:#8A7E68;">Thursday 9 July</span>
+          </div>
+          <sc-for list="{{ bookings }}" as="b" hint-placeholder-count="3">
+            <div style="display:grid; grid-template-columns:90px 1fr 120px auto; gap:20px; align-items:center; padding:14px 24px; border-bottom:1px solid #F1E9D8;">
+              <span style="font:italic 500 18px 'Cormorant Garamond',serif; color:#B4552A;">{{ b.time }}</span>
+              <span style="font:500 15px 'Figtree',sans-serif; color:#1C2B3A;">{{ b.name }}</span>
+              <span style="font:400 14px 'Figtree',sans-serif; color:#8A7E68;">{{ b.party }}</span>
+              <div style="display:flex; gap:8px;">
+                <a href="#3b" style="font:600 12.5px 'Figtree',sans-serif; color:#F7F2E9; background:#1C2B3A; padding:8px 16px; border-radius:2px;" style-hover="background:#B4552A; color:#F7F2E9;">Confirm</a>
+                <a href="#3b" style="font:600 12.5px 'Figtree',sans-serif; color:#5A5142; border:1px solid #DDD2BC; padding:8px 16px; border-radius:2px;" style-hover="color:#B4552A; border-color:#B4552A;">Decline</a>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- Quick edits -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+          <div style="background:#FDFBF5; border:1px solid #DDD2BC; padding:24px;">
+            <div style="font:600 20px 'Cormorant Garamond',serif; color:#1C2B3A; margin-bottom:4px;">Today's hours</div>
+            <div style="font:400 13.5px 'Figtree',sans-serif; color:#8A7E68; margin-bottom:18px;">Closing early? Change it here — the website updates itself.</div>
+            <div style="display:flex; gap:12px; align-items:center;">
+              <input value="8:00" style="width:90px; font:400 15px 'Figtree',sans-serif; padding:11px 12px; border:1px solid #DDD2BC; background:#F7F2E9; color:#1C2B3A; text-align:center;">
+              <span style="font:400 14px 'Figtree',sans-serif; color:#8A7E68;">to</span>
+              <input value="16:00" style="width:90px; font:400 15px 'Figtree',sans-serif; padding:11px 12px; border:1px solid #DDD2BC; background:#F7F2E9; color:#1C2B3A; text-align:center;">
+              <a href="#3b" style="font:600 13px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:11px 20px; border-radius:2px; margin-left:auto;" style-hover="background:#8E3F1D; color:#F7F2E9;">Closed today</a>
+            </div>
+          </div>
+          <div style="background:#FDFBF5; border:1px solid #DDD2BC; padding:24px;">
+            <div style="font:600 20px 'Cormorant Garamond',serif; color:#1C2B3A; margin-bottom:4px;">Menu</div>
+            <div style="font:400 13.5px 'Figtree',sans-serif; color:#8A7E68; margin-bottom:14px;">Tap a dish to change its name, price, or hide it for today.</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-top:1px solid #F1E9D8; font:500 14.5px 'Figtree',sans-serif; color:#1C2B3A;"><span>Seafood chowder</span><span style="display:flex; gap:14px; align-items:center;"><em style="font:italic 500 15px 'Cormorant Garamond',serif; color:#B4552A;">€8.50</em><a href="#3b" style="font:600 12.5px 'Figtree',sans-serif; color:#8A7E68;" style-hover="color:#B4552A;">Edit</a></span></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-top:1px solid #F1E9D8; font:500 14.5px 'Figtree',sans-serif; color:#1C2B3A;"><span>Brown bread &amp; smoked salmon</span><span style="display:flex; gap:14px; align-items:center;"><em style="font:italic 500 15px 'Cormorant Garamond',serif; color:#B4552A;">€11.00</em><a href="#3b" style="font:600 12.5px 'Figtree',sans-serif; color:#8A7E68;" style-hover="color:#B4552A;">Edit</a></span></div>
+            <a href="#3b" style="display:inline-block; margin-top:14px; font:600 13px 'Figtree',sans-serif; color:#B4552A; border-bottom:1px solid #B4552A; padding-bottom:2px;" style-hover="color:#8E3F1D;">+ Add a dish</a>
+          </div>
+        </div>
+
+        <div style="margin-top:24px; font:400 13px 'Figtree',sans-serif; color:#8A7E68;">
+          Stuck? Email <a href="#2a" style="color:#B4552A;" style-hover="color:#8E3F1D;">hello@harbourpages.com</a> — within warranty it's free; after that, most fixes are under an hour.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ OPTION 2a — Final assembly ============ -->
+<div id="2a" style="position:relative; width:1440px; flex:0 0 auto; box-shadow:0 24px 80px rgba(28,35,48,0.25);">
+  <div style="position:absolute; top:-36px; left:0; display:flex; align-items:center; gap:10px;">
+    <a href="#2a" style="display:inline-block; background:#B4552A; color:#F7F2E9; font:600 13px 'Figtree',sans-serif; padding:4px 12px; border-radius:999px;">2a</a>
+    <span style="font:500 13px 'Figtree',sans-serif; color:#5A5142;">Final · 1a opening + centred finale + new pricing</span>
+  </div>
+
+  <div data-screen-label="2a Final Landing" style="background:#F7F2E9; color:#22303F; overflow:hidden;">
+
+    <!-- Nav -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 64px; border-bottom:1px solid #DDD2BC;">
+      <div style="display:flex; align-items:baseline; gap:10px;">
+        <span style="font:600 24px 'Cormorant Garamond',serif; letter-spacing:0.02em;">Harbour<span style="font-style:italic; color:#B4552A;">Pages</span></span>
+        <span style="font:500 11px 'Figtree',sans-serif; letter-spacing:0.18em; color:#8A7E68; text-transform:uppercase;">Est. Ireland</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:32px;">
+        <a href="#3a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Demos</a>
+        <a href="#2a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Process</a>
+        <a href="#2a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Pricing</a>
+        <a href="#2a" style="font:600 15px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:10px 22px; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Free Audit</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div style="display:grid; grid-template-columns: 1.05fr 0.95fr; gap:56px; padding:72px 64px 56px; align-items:center;">
+      <div>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#B4552A; margin-bottom:20px;">Websites for independent Irish hospitality</div>
+        <h1 style="font:500 68px/1.08 'Cormorant Garamond',serif; margin:0 0 24px; color:#1C2B3A; text-wrap:balance;">A safe <em style="color:#B4552A;">harbour</em> for your business online.</h1>
+        <p style="font:500 20px/1.5 'Figtree',sans-serif; color:#22303F; margin:0 0 14px; max-width:34em;">Booking-ready websites for Ireland's independent restaurants, cafés and guesthouses.</p>
+        <p style="font:400 16px/1.65 'Figtree',sans-serif; color:#5A5142; margin:0 0 32px; max-width:36em;">We don't publish, then leave. We build calm, honest websites that take direct bookings, online orders and calls — so the revenue OTAs skim off in commission stays in your till.</p>
+        <div style="display:flex; gap:14px; align-items:center;">
+          <a href="#2a" style="font:600 16px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:15px 30px; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Get my 5-minute audit</a>
+          <a href="#2a" style="font:600 16px 'Figtree',sans-serif; color:#1C2B3A; padding:15px 26px; border:1px solid #1C2B3A; border-radius:2px;" style-hover="background:#1C2B3A; color:#F7F2E9;">See live demos ↓</a>
+        </div>
+      </div>
+      <figure style="margin:0; border:1px solid #DDD2BC; padding:14px; background:#FDFBF5;">
+        <img src="uploads/public/harbour-hero.png" alt="Irish harbour at dawn" style="display:block; width:100%; height:340px; object-fit:cover;">
+        <figcaption style="font:italic 400 14px 'Cormorant Garamond',serif; color:#8A7E68; padding:12px 4px 2px; display:flex; justify-content:space-between;">
+          <span>Plate I. — The harbour at first light.</span><span style="font-family:'Figtree',sans-serif; font-style:normal; font-size:11px; letter-spacing:0.14em;">CO. KERRY</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Demo-first strip -->
+    <div style="padding:0 64px 72px;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; border-top:1px solid #DDD2BC; padding-top:28px; margin-bottom:24px;">
+        <h2 style="font:600 30px 'Cormorant Garamond',serif; margin:0; color:#1C2B3A;">See what your site could become</h2>
+        <span style="font:400 14px 'Figtree',sans-serif; color:#8A7E68;">Live demo sites, built the way we'd build yours</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+        <sc-for list="{{ demos }}" as="d" hint-placeholder-count="3">
+          <a href="#3a" style="display:block; background:#FDFBF5; border:1px solid #DDD2BC; padding:12px 12px 18px; color:#22303F;" style-hover="border-color:#B4552A; color:#22303F;">
+            <div style="height:170px; background:repeating-linear-gradient(-45deg,#F1E9D8,#F1E9D8 10px,#EDE4D0 10px,#EDE4D0 20px); display:flex; align-items:center; justify-content:center;">
+              <span style="font:400 12px ui-monospace,monospace; color:#8A7E68;">{{ d.shot }}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 6px 0;">
+              <div>
+                <div style="font:600 21px 'Cormorant Garamond',serif; color:#1C2B3A;">{{ d.name }}</div>
+                <div style="font:400 13px 'Figtree',sans-serif; color:#8A7E68; margin-top:3px;">{{ d.desc }}</div>
+              </div>
+              <span style="font:600 13px 'Figtree',sans-serif; color:#B4552A; white-space:nowrap;">View demo →</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Odyssey quote band -->
+    <div style="background:#F1E9D8; border-top:1px solid #DDD2BC; border-bottom:1px solid #DDD2BC; display:grid; grid-template-columns:380px 1fr; gap:64px; padding:72px 64px; align-items:center;">
+      <img src="uploads/public/odysseus.png" alt="Ink-wash portrait of Odysseus" style="display:block; width:100%; mix-blend-mode:multiply;">
+      <div>
+        <p style="font:italic 500 36px/1.35 'Cormorant Garamond',serif; color:#1C2B3A; margin:0 0 20px; max-width:20em;">“Tell me, O Muse, of that ingenious hero who travelled far and wide…”</p>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.2em; color:#8A7E68; text-transform:uppercase; margin-bottom:26px;">Homer — The Odyssey</div>
+        <p style="font:400 16px/1.7 'Figtree',sans-serif; color:#5A5142; max-width:38em; margin:0 0 28px;">Most independent businesses are still out there — drifting between an old website, scattered Facebook posts and a booking-portal listing that charges for every guest. Every voyage deserves a homecoming.</p>
+        <a href="#2a" style="font:600 15px 'Figtree',sans-serif; color:#B4552A; border-bottom:1px solid #B4552A; padding-bottom:3px;" style-hover="color:#8E3F1D;">Chart your course home →</a>
+      </div>
+    </div>
+
+    <!-- Leaks -->
+    <div style="padding:80px 64px;">
+      <div style="display:grid; grid-template-columns:340px 1fr; gap:64px;">
+        <div>
+          <h2 style="font:600 38px/1.15 'Cormorant Garamond',serif; margin:0 0 16px; color:#1C2B3A;">Common leaks we fix</h2>
+          <p style="font:400 15px/1.65 'Figtree',sans-serif; color:#5A5142;">Small leaks sink online turnover. Each one below sends a would-be booking to a competitor — or to a portal that takes its cut.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); column-gap:48px;">
+          <sc-for list="{{ leaks }}" as="leak" hint-placeholder-count="8">
+            <div style="display:flex; gap:16px; align-items:baseline; padding:14px 0; border-bottom:1px solid #DDD2BC;">
+              <span style="font:italic 500 16px 'Cormorant Garamond',serif; color:#B4552A; width:26px; flex:0 0 auto;">{{ leak.no }}</span>
+              <div>
+                <div style="font:600 15px 'Figtree',sans-serif; color:#1C2B3A;">{{ leak.title }}</div>
+                <div style="font:400 13.5px/1.5 'Figtree',sans-serif; color:#8A7E68; margin-top:2px;">{{ leak.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div style="background:#F1E9D8; border-top:1px solid #DDD2BC; padding:72px 64px;">
+      <h2 style="font:600 38px 'Cormorant Garamond',serif; margin:0 0 8px; color:#1C2B3A;">From drifting online to booking-ready</h2>
+      <p style="font:400 15px 'Figtree',sans-serif; color:#8A7E68; margin:0 0 40px;">Dock → Inspect → Repair → Refuel → Set sail</p>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <div style="border-left:1px solid #DDD2BC; padding:6px 22px 4px;">
+            <div style="font:italic 500 30px 'Cormorant Garamond',serif; color:#B4552A;">{{ s.no }}</div>
+            <div style="font:600 17px 'Figtree',sans-serif; color:#1C2B3A; margin:10px 0 6px;">{{ s.name }}</div>
+            <div style="font:400 13.5px/1.55 'Figtree',sans-serif; color:#5A5142;">{{ s.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Pricing — new model -->
+    <div style="background:#FDFBF5; border-top:1px solid #DDD2BC; padding:90px 64px;">
+      <h2 style="font:500 44px 'Cormorant Garamond',serif; margin:0 0 14px; color:#1C2B3A; text-align:center;">Simple pricing, built to stay simple</h2>
+      <div style="text-align:center; margin-bottom:14px;">
+        <span style="font:italic 500 64px 'Cormorant Garamond',serif; color:#B4552A;">from €700</span>
+      </div>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#5A5142; max-width:40em; margin:0 auto 56px; text-align:center;">One honest quote, adjusted to the complexity of what you need — agreed before we start, with no retainers and no surprises after.</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; max-width:1200px; margin:0 auto;">
+        <sc-for list="{{ pricing }}" as="p" hint-placeholder-count="3">
+          <div style="border-left:1px solid #DDD2BC; padding:8px 36px 4px;">
+            <div style="font:500 11px 'Figtree',sans-serif; letter-spacing:0.26em; text-transform:uppercase; color:#B4552A; margin-bottom:16px;">{{ p.tag }}</div>
+            <div style="font:500 26px 'Cormorant Garamond',serif; color:#1C2B3A; margin-bottom:16px;">{{ p.name }}</div>
+            <sc-for list="{{ p.points }}" as="pt" hint-placeholder-count="3">
+              <div style="display:flex; gap:12px; align-items:baseline; padding:9px 0; border-top:1px solid #F1E9D8;">
+                <span style="font:italic 500 14px 'Cormorant Garamond',serif; color:#B4552A;">—</span>
+                <span style="font:400 14px/1.55 'Figtree',sans-serif; color:#5A5142;">{{ pt }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex; justify-content:center; gap:48px; margin-top:52px;">
+        <a href="#2a" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:#1C2B3A; border-bottom:1px solid #1C2B3A; padding-bottom:4px;" style-hover="color:#B4552A;">Start with a free audit</a>
+        <a href="#3b" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:#B4552A; border-bottom:1px solid #B4552A; padding-bottom:4px;" style-hover="color:#8E3F1D;">See the owner dashboard →</a>
+      </div>
+    </div>
+
+    <!-- Audit — centred finale style -->
+    <div style="background:#F1E9D8; border-top:1px solid #DDD2BC; padding:96px 64px; text-align:center;">
+      <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.3em; text-transform:uppercase; color:#B4552A; margin-bottom:20px;">Free · no obligation</div>
+      <h2 style="font:500 48px 'Cormorant Garamond',serif; margin:0 0 18px; color:#1C2B3A;">Get your 5-minute website audit</h2>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#5A5142; max-width:34em; margin:0 auto 44px;">Send us your website or Facebook page and we'll reply with a short honest note: what's leaking bookings today, and what we'd fix first.</p>
+      <div style="display:flex; gap:14px; justify-content:center; max-width:780px; margin:0 auto;">
+        <input placeholder="Business name" style="flex:1; font:400 15px 'Figtree',sans-serif; padding:14px 16px; border:1px solid #DDD2BC; background:#FDFBF5; color:#22303F;">
+        <input placeholder="Website or Facebook page" style="flex:1.4; font:400 15px 'Figtree',sans-serif; padding:14px 16px; border:1px solid #DDD2BC; background:#FDFBF5; color:#22303F;">
+        <a href="#2a" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#F7F2E9; background:#B4552A; padding:16px 28px; white-space:nowrap; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Get my audit</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="background:#15212D; color:#8FA0B0; display:flex; justify-content:space-between; align-items:center; padding:28px 64px; font:400 13.5px 'Figtree',sans-serif;">
+      <span style="font:600 18px 'Cormorant Garamond',serif; color:#F7F2E9;">Harbour<span style="font-style:italic; color:#D9A05B;">Pages</span></span>
+      <span>A safe harbour for Irish hospitality online.</span>
+      <a href="#2a" style="color:#D9A05B;" style-hover="color:#F7F2E9;">hello@harbourpages.com</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<section style="display:flex; gap:48px; padding:0 48px; align-items:flex-start;">
+
+<!-- ============ OPTION 1b — Cinematic Maritime ============ -->
+<div id="1b" style="position:relative; width:1440px; flex:0 0 auto; box-shadow:0 24px 80px rgba(6,12,20,0.45);">
+  <div style="position:absolute; top:-36px; left:0; display:flex; align-items:center; gap:10px;">
+    <a href="#1b" style="display:inline-block; background:#0C1622; color:#EAF0F5; font:600 13px 'Figtree',sans-serif; padding:4px 12px; border-radius:999px;">1b</a>
+    <span style="font:500 13px 'Figtree',sans-serif; color:#5A5142;">Cinematic maritime · navy night + amber</span>
+  </div>
+
+  <div data-screen-label="1b Cinematic Landing" style="background:#0C1622; color:#EAF0F5; overflow:hidden;">
+
+    <!-- Hero with video background -->
+    <div style="position:relative; height:820px;">
+      <video src="uploads/public/harbour-cinematic.mp4" poster="uploads/public/harbour-cinematic-poster.jpg" autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(12,22,34,0.55) 0%, rgba(12,22,34,0.25) 40%, rgba(12,22,34,0.92) 100%);"></div>
+
+      <!-- Nav -->
+      <div style="position:relative; display:flex; align-items:center; justify-content:space-between; padding:26px 72px;">
+        <span style="font:600 22px 'Cormorant Garamond',serif; letter-spacing:0.03em;">Harbour<span style="font-style:italic; color:#D9A05B;">Pages</span></span>
+        <div style="display:flex; align-items:center; gap:32px;">
+          <a href="#1b" style="font:500 14px 'Figtree',sans-serif; color:#C4D0DB;" style-hover="color:#D9A05B;">Demos</a>
+          <a href="#1b" style="font:500 14px 'Figtree',sans-serif; color:#C4D0DB;" style-hover="color:#D9A05B;">Process</a>
+          <a href="#1b" style="font:500 14px 'Figtree',sans-serif; color:#C4D0DB;" style-hover="color:#D9A05B;">Pricing</a>
+          <a href="#1b" style="font:600 14px 'Figtree',sans-serif; color:#0C1622; background:#D9A05B; padding:10px 24px; border-radius:999px;" style-hover="background:#EAF0F5; color:#0C1622;">Free Audit</a>
+        </div>
+      </div>
+
+      <!-- Hero copy -->
+      <div style="position:absolute; left:72px; right:72px; bottom:76px;">
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.26em; text-transform:uppercase; color:#D9A05B; margin-bottom:18px;">Websites for independent Irish hospitality</div>
+        <h1 style="font:500 76px/1.06 'Cormorant Garamond',serif; margin:0 0 22px; max-width:11em; text-shadow:0 2px 30px rgba(6,12,20,0.6);">A safe <em style="color:#D9A05B;">harbour</em> for your business online.</h1>
+        <p style="font:500 19px/1.55 'Figtree',sans-serif; color:#EAF0F5; margin:0 0 10px; max-width:34em;">Booking-ready websites for Ireland's independent restaurants, cafés and guesthouses.</p>
+        <p style="font:400 15.5px/1.65 'Figtree',sans-serif; color:#AFBDCA; margin:0 0 34px; max-width:38em;">Calm, honest websites that take direct bookings, orders and calls — so the commission OTAs skim stays in your till.</p>
+        <div style="display:flex; gap:16px; align-items:center;">
+          <a href="#1b" style="font:600 15px 'Figtree',sans-serif; color:#0C1622; background:#D9A05B; padding:16px 32px; border-radius:999px;" style-hover="background:#EAF0F5; color:#0C1622;">Get my 5-minute audit</a>
+          <a href="#1b" style="font:600 15px 'Figtree',sans-serif; color:#EAF0F5; padding:16px 30px; border:1px solid rgba(234,240,245,0.45); border-radius:999px;" style-hover="border-color:#D9A05B; color:#D9A05B;">See live demos ↓</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo-first strip -->
+    <div style="padding:76px 72px; border-bottom:1px solid rgba(234,240,245,0.1);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:28px;">
+        <h2 style="font:500 38px 'Cormorant Garamond',serif; margin:0;">See what your site could become</h2>
+        <span style="font:400 13px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#7A8B9A;">Live demos</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+        <sc-for list="{{ demos }}" as="d" hint-placeholder-count="3">
+          <a href="#1b" style="display:block; background:#101E2E; border:1px solid rgba(234,240,245,0.12); padding:10px 10px 18px; color:#EAF0F5;" style-hover="border-color:#D9A05B; color:#EAF0F5;">
+            <div style="height:170px; background:repeating-linear-gradient(-45deg,#152538,#152538 10px,#12202f 10px,#12202f 20px); display:flex; align-items:center; justify-content:center;">
+              <span style="font:400 12px ui-monospace,monospace; color:#7A8B9A;">{{ d.shot }}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 8px 0;">
+              <div>
+                <div style="font:600 21px 'Cormorant Garamond',serif;">{{ d.name }}</div>
+                <div style="font:400 13px/1.5 'Figtree',sans-serif; color:#7A8B9A; margin-top:3px;">{{ d.desc }}</div>
+              </div>
+              <span style="font:600 13px 'Figtree',sans-serif; color:#D9A05B; white-space:nowrap;">View →</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Odyssey quote — cream inset -->
+    <div style="background:#F4EEE2; color:#22303F; display:grid; grid-template-columns:300px 1fr; gap:60px; padding:76px 72px; align-items:center;">
+      <img src="uploads/public/odysseus.png" alt="Ink-wash portrait of Odysseus" style="display:block; width:100%; mix-blend-mode:multiply;">
+      <div>
+        <p style="font:italic 500 34px/1.35 'Cormorant Garamond',serif; margin:0 0 18px; max-width:20em; color:#1C2B3A;">“Tell me, O Muse, of that ingenious hero who travelled far and wide…”</p>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.24em; text-transform:uppercase; color:#8A7E68; margin-bottom:24px;">Homer — The Odyssey</div>
+        <p style="font:400 15.5px/1.7 'Figtree',sans-serif; color:#5A5142; max-width:38em; margin:0 0 26px;">Most independent businesses are still out there — drifting between an old website, scattered Facebook posts and a portal listing that charges for every guest. Every voyage deserves a homecoming.</p>
+        <a href="#1b" style="font:600 14px 'Figtree',sans-serif; color:#B4552A; border-bottom:1px solid #B4552A; padding-bottom:3px;" style-hover="color:#8E3F1D;">Chart your course home →</a>
+      </div>
+    </div>
+
+    <!-- Leaks -->
+    <div style="padding:84px 72px;">
+      <div style="display:grid; grid-template-columns:320px 1fr; gap:60px;">
+        <div>
+          <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.26em; text-transform:uppercase; color:#D9A05B; margin-bottom:16px;">Act I — Open water</div>
+          <h2 style="font:500 40px/1.15 'Cormorant Garamond',serif; margin:0 0 16px;">Common leaks we fix</h2>
+          <p style="font:400 14.5px/1.65 'Figtree',sans-serif; color:#7A8B9A;">Small leaks sink online turnover. Each one sends a would-be booking to a competitor — or to a portal that takes its cut.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:0 48px;">
+          <sc-for list="{{ leaks }}" as="leak" hint-placeholder-count="8">
+            <div style="display:flex; gap:16px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(234,240,245,0.1);">
+              <span style="font:italic 500 16px 'Cormorant Garamond',serif; color:#D9A05B; width:28px; flex:0 0 auto;">{{ leak.no }}</span>
+              <div>
+                <div style="font:600 15px 'Figtree',sans-serif;">{{ leak.title }}</div>
+                <div style="font:400 13px/1.5 'Figtree',sans-serif; color:#7A8B9A; margin-top:2px;">{{ leak.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process — image band -->
+    <div style="position:relative; padding:84px 72px;">
+      <img src="uploads/public/harbour-hero.png" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.18;">
+      <div style="position:relative;">
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.26em; text-transform:uppercase; color:#D9A05B; margin-bottom:14px;">Act II — The crossing</div>
+        <h2 style="font:500 40px 'Cormorant Garamond',serif; margin:0 0 40px;">From drifting online to booking-ready</h2>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0;">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+            <div style="border-left:1px solid rgba(234,240,245,0.18); padding:6px 22px 4px;">
+              <div style="font:italic 500 30px 'Cormorant Garamond',serif; color:#D9A05B;">{{ s.no }}</div>
+              <div style="font:600 16px 'Figtree',sans-serif; margin:10px 0 6px;">{{ s.name }}</div>
+              <div style="font:400 13px/1.55 'Figtree',sans-serif; color:#AFBDCA;">{{ s.desc }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div style="border-top:1px solid rgba(234,240,245,0.1); display:grid; grid-template-columns:1fr 420px; gap:60px; padding:84px 72px; align-items:center;">
+      <div>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.26em; text-transform:uppercase; color:#D9A05B; margin-bottom:14px;">Act III — Home port</div>
+        <h2 style="font:500 46px/1.15 'Cormorant Garamond',serif; margin:0 0 18px;">More direct bookings.<br>Less unnecessary friction.</h2>
+        <p style="font:400 15.5px/1.7 'Figtree',sans-serif; color:#AFBDCA; max-width:34em; margin:0 0 28px;">Even a handful of bookings a month moved off the portals and onto your own site covers the website — then keeps paying you, month after month.</p>
+        <a href="#1b" style="font:600 15px 'Figtree',sans-serif; color:#0C1622; background:#D9A05B; padding:15px 32px; border-radius:999px; display:inline-block;" style-hover="background:#EAF0F5; color:#0C1622;">Start taking direct bookings</a>
+      </div>
+      <div style="background:#101E2E; border:1px solid rgba(234,240,245,0.12); padding:32px 34px;">
+        <div style="font:600 11px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#7A8B9A; margin-bottom:20px;">Example: guesthouse, 6 rooms</div>
+        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(234,240,245,0.08); font:400 14.5px 'Figtree',sans-serif; color:#AFBDCA;"><span>Average booking</span><span style="color:#EAF0F5; font-weight:600;">€120</span></div>
+        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(234,240,245,0.08); font:400 14.5px 'Figtree',sans-serif; color:#AFBDCA;"><span>Typical stay</span><span style="color:#EAF0F5; font-weight:600;">2 nights</span></div>
+        <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(234,240,245,0.08); font:400 14.5px 'Figtree',sans-serif; color:#AFBDCA;"><span>OTA commission</span><span style="color:#EAF0F5; font-weight:600;">15%</span></div>
+        <div style="display:flex; justify-content:space-between; padding:10px 0; font:400 14.5px 'Figtree',sans-serif; color:#AFBDCA;"><span>Bookings moved direct</span><span style="color:#EAF0F5; font-weight:600;">4 / month</span></div>
+        <div style="margin-top:20px; background:#D9A05B; color:#0C1622; padding:22px 24px;">
+          <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; opacity:0.75;">Commission kept in your till</div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:8px;">
+            <span style="font:600 30px 'Cormorant Garamond',serif;">€144 <span style="font-size:16px; opacity:0.7;">/ month</span></span>
+            <span style="font:600 20px 'Cormorant Garamond',serif;">€1,728 / year</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div style="background:#0A121C; padding:80px 72px;">
+      <h2 style="font:500 40px 'Cormorant Garamond',serif; margin:0 0 36px; text-align:center;">Simple packages, practical outcomes</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;">
+        <sc-for list="{{ plansB }}" as="p" hint-placeholder-count="3">
+          <div style="background:{{ p.bg }}; color:{{ p.fg }}; border:1px solid {{ p.border }}; padding:34px 32px; display:flex; flex-direction:column;">
+            <div style="font:600 11px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:{{ p.kicker }};">{{ p.tag }}</div>
+            <div style="font:600 26px 'Cormorant Garamond',serif; margin:14px 0 4px;">{{ p.name }}</div>
+            <div style="font:italic 500 32px 'Cormorant Garamond',serif; margin-bottom:16px;">{{ p.price }}</div>
+            <div style="font:400 14px/1.65 'Figtree',sans-serif; opacity:0.8; flex:1;">{{ p.desc }}</div>
+            <a href="#1b" style="margin-top:24px; font:600 14px 'Figtree',sans-serif; color:{{ p.ctaFg }}; background:{{ p.ctaBg }}; padding:13px 0; text-align:center; border-radius:999px; display:block;">{{ p.cta }}</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Audit -->
+    <div style="position:relative; padding:90px 72px;">
+      <img src="uploads/public/harbour-cinematic-poster.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.14;">
+      <div style="position:relative; display:grid; grid-template-columns:1fr 440px; gap:60px; align-items:center;">
+        <div>
+          <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.26em; text-transform:uppercase; color:#D9A05B; margin-bottom:14px;">Free · no obligation</div>
+          <h2 style="font:500 48px/1.12 'Cormorant Garamond',serif; margin:0 0 18px;">Get your 5-minute website audit</h2>
+          <p style="font:400 15.5px/1.7 'Figtree',sans-serif; color:#AFBDCA; max-width:30em; margin:0;">Send us your website or Facebook page and we'll reply with a short honest note: what's leaking bookings today, and what we'd fix first.</p>
+        </div>
+        <div style="background:#101E2E; border:1px solid rgba(234,240,245,0.14); padding:30px 32px;">
+          <input placeholder="Business name" style="width:100%; box-sizing:border-box; font:400 15px 'Figtree',sans-serif; padding:13px 14px; border:1px solid rgba(234,240,245,0.16); background:#0C1622; color:#EAF0F5; margin-bottom:14px;">
+          <input placeholder="Website or Facebook page" style="width:100%; box-sizing:border-box; font:400 15px 'Figtree',sans-serif; padding:13px 14px; border:1px solid rgba(234,240,245,0.16); background:#0C1622; color:#EAF0F5; margin-bottom:14px;">
+          <input placeholder="Email" style="width:100%; box-sizing:border-box; font:400 15px 'Figtree',sans-serif; padding:13px 14px; border:1px solid rgba(234,240,245,0.16); background:#0C1622; color:#EAF0F5; margin-bottom:20px;">
+          <a href="#1b" style="display:block; text-align:center; font:600 15px 'Figtree',sans-serif; color:#0C1622; background:#D9A05B; padding:15px 0; border-radius:999px;" style-hover="background:#EAF0F5; color:#0C1622;">Get my free audit</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="background:#080F17; color:#7A8B9A; display:flex; justify-content:space-between; align-items:center; padding:28px 72px; font:400 13px 'Figtree',sans-serif;">
+      <span style="font:600 18px 'Cormorant Garamond',serif; color:#EAF0F5;">Harbour<span style="font-style:italic; color:#D9A05B;">Pages</span></span>
+      <span>A safe harbour for Irish hospitality online.</span>
+      <a href="#1b" style="color:#D9A05B;" style-hover="color:#EAF0F5;">hello@harbourpages.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ OPTION 1c — Minimal Luxe ============ -->
+<div id="1c" style="position:relative; width:1440px; flex:0 0 auto; box-shadow:0 24px 80px rgba(28,35,48,0.18);">
+  <div style="position:absolute; top:-36px; left:0; display:flex; align-items:center; gap:10px;">
+    <a href="#1c" style="display:inline-block; background:#1B1B18; color:#FBFAF7; font:600 13px 'Figtree',sans-serif; padding:4px 12px; border-radius:999px;">1c</a>
+    <span style="font:500 13px 'Figtree',sans-serif; color:#5A5142;">Minimal luxe · whitespace + hairlines</span>
+  </div>
+
+  <div data-screen-label="1c Minimal Luxe Landing" style="background:#FBFAF7; color:#1B1B18; overflow:hidden;">
+
+    <!-- Nav -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:26px 80px; border-bottom:1px solid #E4E0D6;">
+      <span style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.32em; text-transform:uppercase;">Harbourpages</span>
+      <div style="display:flex; align-items:center; gap:36px;">
+        <a href="#1c" style="font:500 13px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#6E6A60;" style-hover="color:#1B1B18;">Demos</a>
+        <a href="#1c" style="font:500 13px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#6E6A60;" style-hover="color:#1B1B18;">Process</a>
+        <a href="#1c" style="font:500 13px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#6E6A60;" style-hover="color:#1B1B18;">Pricing</a>
+        <a href="#1c" style="font:500 13px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#9C5637; border-bottom:1px solid #9C5637; padding-bottom:2px;" style-hover="color:#1B1B18;">Free audit</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div style="padding:110px 80px 72px; text-align:center;">
+      <div style="font:500 12px 'Figtree',sans-serif; letter-spacing:0.34em; text-transform:uppercase; color:#9C5637; margin-bottom:34px;">Websites for independent Irish hospitality</div>
+      <h1 style="font:400 96px/1.05 'Cormorant Garamond',serif; margin:0 auto 34px; max-width:11em; text-wrap:balance;">A safe <em style="color:#9C5637;">harbour</em> for your business online.</h1>
+      <p style="font:400 19px/1.6 'Figtree',sans-serif; color:#1B1B18; margin:0 auto 10px; max-width:34em;">Booking-ready websites for Ireland's independent restaurants, cafés and guesthouses.</p>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#6E6A60; margin:0 auto 44px; max-width:38em;">Calm, honest websites that take direct bookings, orders and calls — so the commission OTAs skim stays in your till.</p>
+      <div style="display:flex; gap:40px; justify-content:center; align-items:center;">
+        <a href="#1c" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:#FBFAF7; background:#1B1B18; padding:17px 38px;" style-hover="background:#9C5637; color:#FBFAF7;">Get my 5-minute audit</a>
+        <a href="#1c" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:#1B1B18; border-bottom:1px solid #1B1B18; padding-bottom:4px;" style-hover="color:#9C5637;">See live demos</a>
+      </div>
+    </div>
+
+    <!-- Full-bleed image -->
+    <div style="padding:0 80px;">
+      <img src="uploads/public/harbour-hero.png" alt="Irish harbour at dawn" style="display:block; width:100%; height:520px; object-fit:cover;">
+      <div style="display:flex; justify-content:space-between; padding:14px 2px 0; font:400 12px 'Figtree',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#A8A294;">
+        <span>The harbour at first light</span><span>Co. Kerry, Ireland</span>
+      </div>
+    </div>
+
+    <!-- Demos as index -->
+    <div style="padding:110px 80px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
+        <h2 style="font:400 44px 'Cormorant Garamond',serif; margin:0;">See what your site could become</h2>
+        <span style="font:400 12px 'Figtree',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#A8A294;">Live demonstrations</span>
+      </div>
+      <sc-for list="{{ demos }}" as="d" hint-placeholder-count="3">
+        <a href="#1c" style="display:grid; grid-template-columns:60px 1fr 1.2fr 220px auto; gap:32px; align-items:center; padding:30px 0; border-bottom:1px solid #E4E0D6; color:#1B1B18;" style-hover="color:#9C5637;">
+          <span style="font:italic 400 22px 'Cormorant Garamond',serif; color:#9C5637;">{{ d.rn }}</span>
+          <span style="font:500 26px 'Cormorant Garamond',serif;">{{ d.name }}</span>
+          <span style="font:400 14px/1.55 'Figtree',sans-serif; color:#6E6A60;">{{ d.desc }}</span>
+          <span style="height:90px; background:repeating-linear-gradient(-45deg,#F3F0E8,#F3F0E8 9px,#EEEAE0 9px,#EEEAE0 18px); display:flex; align-items:center; justify-content:center; font:400 11px ui-monospace,monospace; color:#A8A294;">{{ d.shot }}</span>
+          <span style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.16em; text-transform:uppercase; white-space:nowrap;">View →</span>
+        </a>
+      </sc-for>
+    </div>
+
+    <!-- Quote -->
+    <div style="border-top:1px solid #E4E0D6; padding:110px 80px; text-align:center;">
+      <img src="uploads/public/odysseus.png" alt="Ink-wash portrait of Odysseus" style="display:block; width:220px; margin:0 auto 40px; mix-blend-mode:multiply;">
+      <p style="font:italic 400 40px/1.35 'Cormorant Garamond',serif; margin:0 auto 22px; max-width:18em;">“Tell me, O Muse, of that ingenious hero who travelled far and wide…”</p>
+      <div style="font:500 12px 'Figtree',sans-serif; letter-spacing:0.3em; text-transform:uppercase; color:#A8A294; margin-bottom:30px;">Homer — The Odyssey</div>
+      <p style="font:400 15px/1.75 'Figtree',sans-serif; color:#6E6A60; max-width:36em; margin:0 auto 34px;">Most independent businesses are still out there — drifting between an old website, scattered Facebook posts and a portal listing that charges for every guest. Every voyage deserves a homecoming.</p>
+      <a href="#1c" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:#9C5637; border-bottom:1px solid #9C5637; padding-bottom:4px;" style-hover="color:#1B1B18;">Chart your course home</a>
+    </div>
+
+    <!-- Video -->
+    <div style="background:#14100C; color:#FBFAF7; padding:110px 80px; text-align:center;">
+      <div style="font:500 12px 'Figtree',sans-serif; letter-spacing:0.34em; text-transform:uppercase; color:#C99B72; margin-bottom:22px;">The signal story</div>
+      <h2 style="font:400 56px/1.1 'Cormorant Garamond',serif; margin:0 auto 20px; max-width:14em;">From long drift to safe harbour.</h2>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#B0A79A; max-width:34em; margin:0 auto 48px;">Old pages, scattered updates, PDF menus and booking detours all feed the open water. We bring the business home — one calm site that takes the booking itself.</p>
+      <video src="uploads/public/harbour-cinematic.mp4" poster="uploads/public/harbour-cinematic-poster.jpg" controls preload="none" style="display:block; width:900px; max-width:100%; margin:0 auto;"></video>
+    </div>
+
+    <!-- Leaks index -->
+    <div style="padding:110px 80px;">
+      <h2 style="font:400 44px 'Cormorant Garamond',serif; margin:0 0 10px;">Common leaks we fix</h2>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#6E6A60; max-width:40em; margin:0 0 44px;">Small leaks sink online turnover. Each one below sends a would-be booking to a competitor — or to a portal that takes its cut.</p>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); column-gap:56px;">
+        <sc-for list="{{ leaks }}" as="leak" hint-placeholder-count="8">
+          <div style="padding:22px 0; border-top:1px solid #E4E0D6;">
+            <div style="font:italic 400 16px 'Cormorant Garamond',serif; color:#9C5637; margin-bottom:8px;">{{ leak.no }}</div>
+            <div style="font:600 15px 'Figtree',sans-serif;">{{ leak.title }}</div>
+            <div style="font:400 13px/1.55 'Figtree',sans-serif; color:#6E6A60; margin-top:4px;">{{ leak.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div style="border-top:1px solid #E4E0D6; padding:90px 80px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:44px;">
+        <h2 style="font:400 44px 'Cormorant Garamond',serif; margin:0;">From drifting online to booking-ready</h2>
+        <span style="font:400 12px 'Figtree',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#A8A294;">Five movements</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:40px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <div>
+            <div style="font:italic 400 42px 'Cormorant Garamond',serif; color:#D9CFC0;">{{ s.no }}</div>
+            <div style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.16em; text-transform:uppercase; margin:12px 0 8px;">{{ s.name }}</div>
+            <div style="font:400 13.5px/1.6 'Figtree',sans-serif; color:#6E6A60;">{{ s.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div style="border-top:1px solid #E4E0D6; padding:110px 80px; text-align:center;">
+      <h2 style="font:400 52px/1.15 'Cormorant Garamond',serif; margin:0 auto 20px; max-width:16em;">More direct bookings. Less unnecessary friction.</h2>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#6E6A60; max-width:38em; margin:0 auto 56px;">For a small guesthouse — 6 rooms, €120 average booking, 15% OTA commission — moving just four bookings a month direct keeps:</p>
+      <div style="display:flex; justify-content:center; align-items:baseline; gap:80px; margin-bottom:56px;">
+        <div>
+          <div style="font:400 88px 'Cormorant Garamond',serif; color:#1B1B18;">€144</div>
+          <div style="font:500 12px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#A8A294; margin-top:6px;">per month</div>
+        </div>
+        <div style="width:1px; height:80px; background:#E4E0D6; align-self:center;"></div>
+        <div>
+          <div style="font:400 88px 'Cormorant Garamond',serif; color:#9C5637;">€1,728</div>
+          <div style="font:500 12px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#A8A294; margin-top:6px;">per year, in your till</div>
+        </div>
+      </div>
+      <a href="#1c" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:#FBFAF7; background:#1B1B18; padding:17px 38px; display:inline-block;" style-hover="background:#9C5637; color:#FBFAF7;">Start taking direct bookings</a>
+    </div>
+
+    <!-- Pricing -->
+    <div style="border-top:1px solid #E4E0D6; padding:100px 80px;">
+      <h2 style="font:400 44px 'Cormorant Garamond',serif; margin:0 0 52px; text-align:center;">Simple packages, practical outcomes</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0;">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+          <div style="border-left:1px solid #E4E0D6; padding:8px 40px 4px; display:flex; flex-direction:column;">
+            <div style="font:500 11px 'Figtree',sans-serif; letter-spacing:0.26em; text-transform:uppercase; color:#9C5637;">{{ p.tag }}</div>
+            <div style="font:500 28px 'Cormorant Garamond',serif; margin:16px 0 2px;">{{ p.name }}</div>
+            <div style="font:italic 400 36px 'Cormorant Garamond',serif; margin-bottom:18px;">{{ p.price }}</div>
+            <div style="font:400 14px/1.7 'Figtree',sans-serif; color:#6E6A60; flex:1;">{{ p.desc }}</div>
+            <a href="#1c" style="margin-top:28px; font:600 12px 'Figtree',sans-serif; letter-spacing:0.18em; text-transform:uppercase; color:#1B1B18; border-bottom:1px solid #1B1B18; padding-bottom:4px; align-self:flex-start;" style-hover="color:#9C5637;">{{ p.cta }}</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Audit -->
+    <div style="background:#F3F0E8; border-top:1px solid #E4E0D6; padding:110px 80px; text-align:center;">
+      <div style="font:500 12px 'Figtree',sans-serif; letter-spacing:0.34em; text-transform:uppercase; color:#9C5637; margin-bottom:22px;">Free · no obligation</div>
+      <h2 style="font:400 52px 'Cormorant Garamond',serif; margin:0 0 18px;">Get your 5-minute website audit</h2>
+      <p style="font:400 15px/1.7 'Figtree',sans-serif; color:#6E6A60; max-width:34em; margin:0 auto 44px;">Send us your website or Facebook page and we'll reply with a short honest note: what's leaking bookings today, and what we'd fix first.</p>
+      <div style="display:flex; gap:16px; justify-content:center; max-width:820px; margin:0 auto;">
+        <input placeholder="Business name" style="flex:1; font:400 15px 'Figtree',sans-serif; padding:15px 18px; border:1px solid #D9CFC0; background:#FBFAF7; color:#1B1B18;">
+        <input placeholder="Website or Facebook page" style="flex:1.4; font:400 15px 'Figtree',sans-serif; padding:15px 18px; border:1px solid #D9CFC0; background:#FBFAF7; color:#1B1B18;">
+        <a href="#1c" style="font:600 13px 'Figtree',sans-serif; letter-spacing:0.16em; text-transform:uppercase; color:#FBFAF7; background:#9C5637; padding:17px 30px; white-space:nowrap;" style-hover="background:#1B1B18; color:#FBFAF7;">Get my audit</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:30px 80px; border-top:1px solid #E4E0D6; font:400 12px 'Figtree',sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#A8A294;">
+      <span style="color:#1B1B18; font-weight:600;">Harbourpages</span>
+      <span>A safe harbour for Irish hospitality online</span>
+      <a href="#1c" style="color:#9C5637;" style-hover="color:#1B1B18;">hello@harbourpages.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ OPTION 1a — Editorial Publishing ============ -->
+<div id="1a" style="position:relative; width:1440px; flex:0 0 auto; box-shadow:0 24px 80px rgba(28,35,48,0.25);">
+  <div style="position:absolute; top:-36px; left:0; display:flex; align-items:center; gap:10px;">
+    <a href="#1a" style="display:inline-block; background:#1C2B3A; color:#F7F2E9; font:600 13px 'Figtree',sans-serif; padding:4px 12px; border-radius:999px;">1a</a>
+    <span style="font:500 13px 'Figtree',sans-serif; color:#5A5142;">Editorial publishing · cream paper + ink</span>
+  </div>
+
+  <div data-screen-label="1a Editorial Landing" style="background:#F7F2E9; color:#22303F; overflow:hidden;">
+
+    <!-- Nav -->
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 64px; border-bottom:1px solid #DDD2BC;">
+      <div style="display:flex; align-items:baseline; gap:10px;">
+        <span style="font:600 24px 'Cormorant Garamond',serif; letter-spacing:0.02em;">Harbour<span style="font-style:italic; color:#B4552A;">Pages</span></span>
+        <span style="font:500 11px 'Figtree',sans-serif; letter-spacing:0.18em; color:#8A7E68; text-transform:uppercase;">Est. Ireland</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:32px;">
+        <a href="#1a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Demos</a>
+        <a href="#1a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Process</a>
+        <a href="#1a" style="font:500 15px 'Figtree',sans-serif; color:#435060;" style-hover="color:#B4552A;">Pricing</a>
+        <a href="#1a" style="font:600 15px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:10px 22px; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Free Audit</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div style="display:grid; grid-template-columns: 1.05fr 0.95fr; gap:56px; padding:72px 64px 56px; align-items:center;">
+      <div>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#B4552A; margin-bottom:20px;">Websites for independent Irish hospitality</div>
+        <h1 style="font:500 68px/1.08 'Cormorant Garamond',serif; margin:0 0 24px; color:#1C2B3A; text-wrap:balance;">A safe <em style="color:#B4552A;">harbour</em> for your business online.</h1>
+        <p style="font:500 20px/1.5 'Figtree',sans-serif; color:#22303F; margin:0 0 14px; max-width:34em;">Booking-ready websites for Ireland's independent restaurants, cafés and guesthouses.</p>
+        <p style="font:400 16px/1.65 'Figtree',sans-serif; color:#5A5142; margin:0 0 32px; max-width:36em;">We don't publish, then leave. We build calm, honest websites that take direct bookings, online orders and calls — so the revenue OTAs skim off in commission stays in your till.</p>
+        <div style="display:flex; gap:14px; align-items:center;">
+          <a href="#1a" style="font:600 16px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:15px 30px; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Get my 5-minute audit</a>
+          <a href="#1a" style="font:600 16px 'Figtree',sans-serif; color:#1C2B3A; padding:15px 26px; border:1px solid #1C2B3A; border-radius:2px;" style-hover="background:#1C2B3A; color:#F7F2E9;">See live demos ↓</a>
+        </div>
+      </div>
+      <figure style="margin:0; border:1px solid #DDD2BC; padding:14px; background:#FDFBF5;">
+        <img src="uploads/public/harbour-hero.png" alt="Irish harbour at dawn" style="display:block; width:100%; height:340px; object-fit:cover;">
+        <figcaption style="font:italic 400 14px 'Cormorant Garamond',serif; color:#8A7E68; padding:12px 4px 2px; display:flex; justify-content:space-between;">
+          <span>Plate I. — The harbour at first light.</span><span style="font-family:'Figtree',sans-serif; font-style:normal; font-size:11px; letter-spacing:0.14em;">CO. KERRY</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Demo-first strip -->
+    <div style="padding:0 64px 72px;">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; border-top:1px solid #DDD2BC; padding-top:28px; margin-bottom:24px;">
+        <h2 style="font:600 30px 'Cormorant Garamond',serif; margin:0; color:#1C2B3A;">See what your site could become</h2>
+        <span style="font:400 14px 'Figtree',sans-serif; color:#8A7E68;">Live demo sites, built the way we'd build yours</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+        <sc-for list="{{ demos }}" as="d" hint-placeholder-count="3">
+          <a href="#1a" style="display:block; background:#FDFBF5; border:1px solid #DDD2BC; padding:12px 12px 18px; color:#22303F;" style-hover="border-color:#B4552A; color:#22303F;">
+            <div style="height:170px; background:repeating-linear-gradient(-45deg,#F1E9D8,#F1E9D8 10px,#EDE4D0 10px,#EDE4D0 20px); display:flex; align-items:center; justify-content:center;">
+              <span style="font:400 12px ui-monospace,monospace; color:#8A7E68;">{{ d.shot }}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; padding:16px 6px 0;">
+              <div>
+                <div style="font:600 21px 'Cormorant Garamond',serif; color:#1C2B3A;">{{ d.name }}</div>
+                <div style="font:400 13px 'Figtree',sans-serif; color:#8A7E68; margin-top:3px;">{{ d.desc }}</div>
+              </div>
+              <span style="font:600 13px 'Figtree',sans-serif; color:#B4552A; white-space:nowrap;">View demo →</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Odyssey quote band -->
+    <div style="background:#F1E9D8; border-top:1px solid #DDD2BC; border-bottom:1px solid #DDD2BC; display:grid; grid-template-columns:380px 1fr; gap:64px; padding:72px 64px; align-items:center;">
+      <img src="uploads/public/odysseus.png" alt="Ink-wash portrait of Odysseus" style="display:block; width:100%; mix-blend-mode:multiply;">
+      <div>
+        <p style="font:italic 500 36px/1.35 'Cormorant Garamond',serif; color:#1C2B3A; margin:0 0 20px; max-width:20em;">“Tell me, O Muse, of that ingenious hero who travelled far and wide…”</p>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.2em; color:#8A7E68; text-transform:uppercase; margin-bottom:26px;">Homer — The Odyssey</div>
+        <p style="font:400 16px/1.7 'Figtree',sans-serif; color:#5A5142; max-width:38em; margin:0 0 28px;">Most independent businesses are still out there — drifting between an old website, scattered Facebook posts and a booking-portal listing that charges for every guest. Every voyage deserves a homecoming.</p>
+        <a href="#1a" style="font:600 15px 'Figtree',sans-serif; color:#B4552A; border-bottom:1px solid #B4552A; padding-bottom:3px;" style-hover="color:#8E3F1D;">Chart your course home →</a>
+      </div>
+    </div>
+
+    <!-- Cinematic video band -->
+    <div style="background:#1C2B3A; color:#F7F2E9; padding:80px 64px;">
+      <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center;">
+        <div>
+          <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#D9A05B; margin-bottom:18px;">The signal story</div>
+          <h2 style="font:500 48px/1.12 'Cormorant Garamond',serif; margin:0 0 20px;">From long drift to safe harbour.</h2>
+          <p style="font:400 16px/1.7 'Figtree',sans-serif; color:#B9C2CC; max-width:30em; margin:0;">Old pages, scattered updates, PDF menus and booking detours all feed the open water. We bring the business home — one calm site that takes the booking itself.</p>
+        </div>
+        <video src="uploads/public/harbour-cinematic.mp4" poster="uploads/public/harbour-cinematic-poster.jpg" controls preload="none" style="display:block; width:100%; border:1px solid rgba(247,242,233,0.2);"></video>
+      </div>
+    </div>
+
+    <!-- Leaks -->
+    <div style="padding:80px 64px;">
+      <div style="display:grid; grid-template-columns:340px 1fr; gap:64px;">
+        <div>
+          <h2 style="font:600 38px/1.15 'Cormorant Garamond',serif; margin:0 0 16px; color:#1C2B3A;">Common leaks we fix</h2>
+          <p style="font:400 15px/1.65 'Figtree',sans-serif; color:#5A5142;">Small leaks sink online turnover. Each one below sends a would-be booking to a competitor — or to a portal that takes its cut.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); column-gap:48px;">
+          <sc-for list="{{ leaks }}" as="leak" hint-placeholder-count="8">
+            <div style="display:flex; gap:16px; align-items:baseline; padding:14px 0; border-bottom:1px solid #DDD2BC;">
+              <span style="font:italic 500 16px 'Cormorant Garamond',serif; color:#B4552A; width:26px; flex:0 0 auto;">{{ leak.no }}</span>
+              <div>
+                <div style="font:600 15px 'Figtree',sans-serif; color:#1C2B3A;">{{ leak.title }}</div>
+                <div style="font:400 13.5px/1.5 'Figtree',sans-serif; color:#8A7E68; margin-top:2px;">{{ leak.desc }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process -->
+    <div style="background:#F1E9D8; border-top:1px solid #DDD2BC; padding:72px 64px;">
+      <h2 style="font:600 38px 'Cormorant Garamond',serif; margin:0 0 8px; color:#1C2B3A;">From drifting online to booking-ready</h2>
+      <p style="font:400 15px 'Figtree',sans-serif; color:#8A7E68; margin:0 0 40px;">Dock → Inspect → Repair → Refuel → Set sail</p>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+          <div style="border-left:1px solid #DDD2BC; padding:6px 22px 4px;">
+            <div style="font:italic 500 30px 'Cormorant Garamond',serif; color:#B4552A;">{{ s.no }}</div>
+            <div style="font:600 17px 'Figtree',sans-serif; color:#1C2B3A; margin:10px 0 6px;">{{ s.name }}</div>
+            <div style="font:400 13.5px/1.55 'Figtree',sans-serif; color:#5A5142;">{{ s.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ROI -->
+    <div style="display:grid; grid-template-columns:1fr 420px; gap:64px; padding:80px 64px; align-items:center;">
+      <div>
+        <h2 style="font:600 44px/1.15 'Cormorant Garamond',serif; margin:0 0 18px; color:#1C2B3A;">More direct bookings.<br>Less unnecessary friction.</h2>
+        <p style="font:400 16px/1.7 'Figtree',sans-serif; color:#5A5142; max-width:34em; margin:0 0 28px;">For a small guesthouse, restaurant or café, even a handful of bookings a month moved off the portals and onto your own site covers the website — then keeps paying you, month after month.</p>
+        <a href="#1a" style="font:600 16px 'Figtree',sans-serif; color:#F7F2E9; background:#1C2B3A; padding:15px 30px; border-radius:2px; display:inline-block;" style-hover="background:#B4552A; color:#F7F2E9;">Start taking direct bookings</a>
+      </div>
+      <div style="background:#FDFBF5; border:1px solid #DDD2BC; padding:32px 34px;">
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:#8A7E68; margin-bottom:22px;">Example: guesthouse, 6 rooms</div>
+        <div style="display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid #EDE4D0; font:400 15px 'Figtree',sans-serif; color:#5A5142;"><span>Average booking</span><span style="color:#1C2B3A; font-weight:600;">€120</span></div>
+        <div style="display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid #EDE4D0; font:400 15px 'Figtree',sans-serif; color:#5A5142;"><span>Typical stay</span><span style="color:#1C2B3A; font-weight:600;">2 nights</span></div>
+        <div style="display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid #EDE4D0; font:400 15px 'Figtree',sans-serif; color:#5A5142;"><span>OTA commission</span><span style="color:#1C2B3A; font-weight:600;">15%</span></div>
+        <div style="display:flex; justify-content:space-between; padding:11px 0; font:400 15px 'Figtree',sans-serif; color:#5A5142;"><span>Bookings moved direct</span><span style="color:#1C2B3A; font-weight:600;">4 / month</span></div>
+        <div style="margin-top:20px; background:#1C2B3A; color:#F7F2E9; padding:22px 24px;">
+          <div style="font:400 13px 'Figtree',sans-serif; color:#B9C2CC;">Commission kept in your till</div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:8px;">
+            <span style="font:600 30px 'Cormorant Garamond',serif;">€144 <span style="font-size:16px; color:#B9C2CC;">/ month</span></span>
+            <span style="font:600 20px 'Cormorant Garamond',serif; color:#D9A05B;">€1,728 / year</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div style="background:#F1E9D8; border-top:1px solid #DDD2BC; padding:72px 64px;">
+      <h2 style="font:600 38px 'Cormorant Garamond',serif; margin:0 0 36px; color:#1C2B3A; text-align:center;">Simple packages, practical outcomes</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch;">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+          <div style="background:{{ p.bg }}; color:{{ p.fg }}; border:1px solid #DDD2BC; padding:34px 32px; display:flex; flex-direction:column;">
+            <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.2em; text-transform:uppercase; color:{{ p.kicker }};">{{ p.tag }}</div>
+            <div style="font:600 26px 'Cormorant Garamond',serif; margin:14px 0 4px;">{{ p.name }}</div>
+            <div style="font:500 32px 'Cormorant Garamond',serif; font-style:italic; margin-bottom:16px;">{{ p.price }}</div>
+            <div style="font:400 14px/1.65 'Figtree',sans-serif; opacity:0.82; flex:1;">{{ p.desc }}</div>
+            <a href="#1a" style="margin-top:24px; font:600 14px 'Figtree',sans-serif; color:{{ p.ctaFg }}; background:{{ p.ctaBg }}; padding:12px 0; text-align:center; border-radius:2px; display:block;">{{ p.cta }}</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Audit CTA -->
+    <div style="background:#1C2B3A; color:#F7F2E9; display:grid; grid-template-columns:1fr 440px; gap:64px; padding:80px 64px; align-items:center;">
+      <div>
+        <div style="font:600 12px 'Figtree',sans-serif; letter-spacing:0.22em; text-transform:uppercase; color:#D9A05B; margin-bottom:16px;">Free · no obligation</div>
+        <h2 style="font:500 46px/1.12 'Cormorant Garamond',serif; margin:0 0 18px;">Get your 5-minute website audit</h2>
+        <p style="font:400 16px/1.7 'Figtree',sans-serif; color:#B9C2CC; max-width:30em; margin:0;">Send us your website or Facebook page and we'll reply with a short honest note: what's leaking bookings today, and what we'd fix first.</p>
+      </div>
+      <div style="background:#F7F2E9; color:#22303F; padding:30px 32px;">
+        <label style="display:block; font:600 12px 'Figtree',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#8A7E68; margin-bottom:6px;">Business name</label>
+        <input placeholder="The Harbour Cafe" style="width:100%; box-sizing:border-box; font:400 15px 'Figtree',sans-serif; padding:11px 12px; border:1px solid #DDD2BC; background:#FDFBF5; margin-bottom:16px;">
+        <label style="display:block; font:600 12px 'Figtree',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#8A7E68; margin-bottom:6px;">Website or Facebook page</label>
+        <input placeholder="https://…" style="width:100%; box-sizing:border-box; font:400 15px 'Figtree',sans-serif; padding:11px 12px; border:1px solid #DDD2BC; background:#FDFBF5; margin-bottom:16px;">
+        <label style="display:block; font:600 12px 'Figtree',sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#8A7E68; margin-bottom:6px;">Email</label>
+        <input placeholder="you@business.ie" style="width:100%; box-sizing:border-box; font:400 15px 'Figtree',sans-serif; padding:11px 12px; border:1px solid #DDD2BC; background:#FDFBF5; margin-bottom:20px;">
+        <a href="#1a" style="display:block; text-align:center; font:600 15px 'Figtree',sans-serif; color:#F7F2E9; background:#B4552A; padding:14px 0; border-radius:2px;" style-hover="background:#8E3F1D; color:#F7F2E9;">Get my free audit</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="background:#15212D; color:#8FA0B0; display:flex; justify-content:space-between; align-items:center; padding:28px 64px; font:400 13.5px 'Figtree',sans-serif;">
+      <span style="font:600 18px 'Cormorant Garamond',serif; color:#F7F2E9;">Harbour<span style="font-style:italic; color:#D9A05B;">Pages</span></span>
+      <span>A safe harbour for Irish hospitality online.</span>
+      <a href="#1a" style="color:#D9A05B;" style-hover="color:#F7F2E9;">hello@harbourpages.com</a>
+    </div>
+  </div>
+</div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      demos: [
+        { rn: 'i.', name: 'The Harbour Cafe', desc: 'For cafés, restaurants and takeaways — menu, hours, orders.', shot: '[ demo screenshot — cafe ]' },
+        { rn: 'ii.', name: 'Seaview Guesthouse', desc: 'For B&Bs and guesthouses — rooms, rates, direct booking.', shot: '[ demo screenshot — guesthouse ]' },
+        { rn: 'iii.', name: "O'Malley's Pub", desc: 'For pubs and local venues — events, menus, reservations.', shot: '[ demo screenshot — pub ]' },
+      ],
+      leaks: [
+        { no: 'i.', title: 'No website', desc: 'Word of mouth only — invisible to visiting trade.' },
+        { no: 'ii.', title: 'Facebook only', desc: 'Your front door lives on rented land.' },
+        { no: 'iii.', title: 'PDF menus', desc: 'Slow to load, unreadable on a phone.' },
+        { no: 'iv.', title: 'No direct booking', desc: 'Guests get pushed to OTAs — you pay the cut.' },
+        { no: 'v.', title: 'No online ordering', desc: 'Takeaway trade goes to aggregator apps.' },
+        { no: 'vi.', title: 'Outdated hours', desc: 'Locked doors and bad reviews.' },
+        { no: 'vii.', title: 'Broken SSL', desc: '“Not secure” warnings scare off bookings.' },
+        { no: 'viii.', title: 'Hard to contact', desc: 'Buried phone numbers, dead enquiry forms.' },
+      ],
+      steps: [
+        { no: 'I', name: 'Dock', desc: 'We gather what exists — pages, menus, listings, photos.' },
+        { no: 'II', name: 'Inspect', desc: 'A plain-spoken audit of what leaks bookings today.' },
+        { no: 'III', name: 'Repair', desc: 'One calm site: menu, hours, booking, orders, contact.' },
+        { no: 'IV', name: 'Refuel', desc: 'Direct booking, ordering and enquiry paths switched on.' },
+        { no: 'V', name: 'Set sail', desc: 'Launch, with practical support that stays after launch.' },
+      ],
+      plans: [
+        { tag: 'Presence', name: 'Presence Page', price: 'from €800', desc: 'For businesses with no site at all. One honest page: who you are, menu, hours, map, contact.', cta: 'Start with a free audit', bg: '#FDFBF5', fg: '#22303F', kicker: '#8A7E68', ctaBg: '#F1E9D8', ctaFg: '#1C2B3A' },
+        { tag: 'Most popular', name: 'Booking-Ready Website', price: 'from €1,900', desc: 'The full harbour: multi-page site, menus and rooms, direct booking or ordering, Google setup, launch support.', cta: 'Start with a free audit', bg: '#1C2B3A', fg: '#F7F2E9', kicker: '#D9A05B', ctaBg: '#B4552A', ctaFg: '#F7F2E9' },
+        { tag: 'Custom', name: 'Direct Booking Setup', price: 'Custom', desc: 'Already have a site you like? We add the direct booking and ordering layer, and tune what leaks.', cta: 'Talk to us first', bg: '#FDFBF5', fg: '#22303F', kicker: '#8A7E68', ctaBg: '#F1E9D8', ctaFg: '#1C2B3A' },
+      ],
+      menu: [
+        { name: 'Seafood chowder', desc: 'Brown bread, Kerry butter', price: '€8.50' },
+        { name: 'Brown bread & smoked salmon', desc: 'Capers, lemon, dill cream', price: '€11.00' },
+        { name: 'Full Irish breakfast', desc: 'Until noon, no exceptions', price: '€13.50' },
+        { name: 'Toasted special', desc: 'Ham, cheese, onion, tomato', price: '€7.00' },
+        { name: 'Apple tart', desc: 'Warm, with cream or custard', price: '€5.50' },
+        { name: 'Flat white', desc: 'Beans roasted in Cork', price: '€3.60' },
+      ],
+      adminNav: [
+        { name: 'Overview', badge: '', font: '600 15px', fg: '#1C2B3A', bg: '#F7F2E9', bar: '#B4552A' },
+        { name: 'Bookings', badge: '3', font: '500 15px', fg: '#5A5142', bg: 'transparent', bar: 'transparent' },
+        { name: 'Menu', badge: '', font: '500 15px', fg: '#5A5142', bg: 'transparent', bar: 'transparent' },
+        { name: 'Opening hours', badge: '', font: '500 15px', fg: '#5A5142', bg: 'transparent', bar: 'transparent' },
+        { name: 'Photos', badge: '', font: '500 15px', fg: '#5A5142', bg: 'transparent', bar: 'transparent' },
+        { name: 'Messages', badge: '1', font: '500 15px', fg: '#5A5142', bg: 'transparent', bar: 'transparent' },
+      ],
+      bookings: [
+        { time: '12:30', name: 'Aoife Brennan', party: 'Table for 2' },
+        { time: '13:15', name: 'The Walsh family', party: 'Table for 5' },
+        { time: '15:00', name: 'James O\u2019Connor', party: 'Table for 4' },
+      ],
+      pricing: [
+        { tag: 'The build', name: 'One-off delivery', points: [
+          'A complete static website, delivered once and built to last',
+          'Two rounds of revisions included — enough to get it right',
+          'Quote agreed up front, adjusted only if the scope grows',
+        ]},
+        { tag: 'Low maintenance by design', name: 'Nothing to babysit', points: [
+          'Static-first delivery — no servers or plugins to break',
+          'Bookings & availability on Sanity or Supabase generous free tiers',
+          'Admin made foolproof: update menus, hours and rooms yourself',
+        ]},
+        { tag: 'After launch', name: '3-month warranty', points: [
+          'Anything broken in the first three months, fixed free',
+          'Beyond warranty, fixes are billed by the hour — most are small jobs',
+          'No retainers, no monthly fees, no surprises',
+        ]},
+      ],
+      plansB: [
+        { tag: 'Presence', name: 'Presence Page', price: 'from €800', desc: 'For businesses with no site at all. One honest page: who you are, menu, hours, map, contact.', cta: 'Start with a free audit', bg: '#101E2E', fg: '#EAF0F5', border: 'rgba(234,240,245,0.12)', kicker: '#7A8B9A', ctaBg: 'rgba(234,240,245,0.08)', ctaFg: '#EAF0F5' },
+        { tag: 'Most popular', name: 'Booking-Ready Website', price: 'from €1,900', desc: 'The full harbour: multi-page site, menus and rooms, direct booking or ordering, Google setup, launch support.', cta: 'Start with a free audit', bg: '#152538', fg: '#EAF0F5', border: '#D9A05B', kicker: '#D9A05B', ctaBg: '#D9A05B', ctaFg: '#0C1622' },
+        { tag: 'Custom', name: 'Direct Booking Setup', price: 'Custom', desc: 'Already have a site you like? We add the direct booking and ordering layer, and tune what leaks.', cta: 'Talk to us first', bg: '#101E2E', fg: '#EAF0F5', border: 'rgba(234,240,245,0.12)', kicker: '#7A8B9A', ctaBg: 'rgba(234,240,245,0.08)', ctaFg: '#EAF0F5' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
