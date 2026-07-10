@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="preload" as="image" href="assets/harbour-hero.webp" fetchpriority="high">
 </head>
 <body>
 
@@ -39,7 +40,7 @@
       </div>
     </div>
     <figure class="plate">
-      <img src="assets/harbour-hero.png" alt="Irish harbour at dawn">
+      <img src="assets/harbour-hero.webp" alt="Irish harbour at dawn" width="1400" height="681" fetchpriority="high" decoding="async">
       <figcaption>
         <span>Plate I. &mdash; The harbour at first light.</span>
         <span class="plateMeta">CO. KERRY</span>
@@ -89,7 +90,7 @@
 
   <!-- Odyssey quote band -->
   <section class="band bandAlt quoteBand">
-    <img src="assets/odysseus.png" alt="Ink-wash portrait of Odysseus">
+    <img src="assets/odysseus.webp" alt="Ink-wash portrait of Odysseus" width="900" height="1125" loading="lazy" decoding="async">
     <div>
       <blockquote>&ldquo;Tell me, O Muse, of that ingenious hero who travelled far and wide&hellip;&rdquo;</blockquote>
       <div class="quoteAttr">Homer &mdash; The Odyssey</div>
