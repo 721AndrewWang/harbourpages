@@ -50,7 +50,7 @@ Ignore sections `1a`, `1b`, `1c` (superseded explorations).
 6. **Process** (alt cream): "From drifting online to booking-ready", subtitle "Dock → Inspect → Repair → Refuel → Set sail", 5 columns with roman numerals I–V.
 7. **Pricing** (card-white band) — **this is the approved pricing model, do not reintroduce packages or ROI numbers**:
    - H2 "Simple pricing, built to stay simple"
-   - Big italic serif: **from €700** (quote adjusted to complexity, agreed up front; no retainers, no surprises)
+   - Big italic serif: **from €800** (quote adjusted to complexity, agreed up front; no retainers, no surprises)
    - Three hairline columns:
      - *The build — One-off delivery*: complete static website delivered once; **two rounds of revisions included**; quote agreed up front, adjusted only if scope grows.
      - *Low maintenance by design — Nothing to babysit*: static-first (no servers/plugins to break); bookings & availability on **Sanity or Supabase generous free tiers**; foolproof admin (owner updates menus/hours/rooms themselves).
@@ -75,6 +75,6 @@ Intended stack per business model: static-first frontend; content + availability
 
 - Direct bookings / anti-OTA-commission framing is the core narrative.
 - Demo-first: live demos surface immediately after the hero.
-- Pricing: from €700, complexity-adjusted; 2 revision rounds; 3-month warranty; hourly after; free-tier infra; no monthly fees. (Founder's base was £600 ≈ $800; site displays euros for the Irish market.)
+- Pricing: from €800 (raised from €700 on 2026-07-10 by founder decision), complexity-adjusted; 2 revision rounds; 3-month warranty; hourly after; free-tier infra; no monthly fees. All prices on-site in EUR.
 - All prices/currency on-site in **EUR**.
 - English copy throughout.
