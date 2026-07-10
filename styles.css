@@ -510,27 +510,16 @@ input {
   margin-bottom: 14px;
 }
 
-/* Menu-style price: italic "from", upright engraved digits, small raised euro.
-   Cormorant's italic figures are wide ovals — digits stay roman on purpose. */
-.priceFrom {
-  font: italic 500 clamp(30px, 3.2vw, 40px) var(--serif);
+.priceHero span {
+  font: italic 500 clamp(44px, 5vw, 64px) var(--serif);
   color: var(--accent);
-  margin-right: 0.35em;
 }
 
-.priceAmount {
-  font: 500 clamp(48px, 5.6vw, 72px) var(--serif);
-  color: var(--accent);
-  letter-spacing: 0.015em;
-  font-variant-numeric: lining-nums;
-  font-feature-settings: "lnum" 1;
-}
-
-.priceCur {
-  font-size: 0.52em;
-  vertical-align: 0.62em;
-  margin-right: 0.12em;
-  letter-spacing: 0;
+/* Cormorant's italic oldstyle zeros sit low next to the tall 8 —
+   a slight lift optically centres them (menu-price flourish). */
+.priceZeros {
+  position: relative;
+  top: -0.12em;
 }
 
 .priceSub {
