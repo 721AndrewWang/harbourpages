@@ -513,6 +513,10 @@ input {
 .priceHero span {
   font: italic 500 clamp(44px, 5vw, 64px) var(--serif);
   color: var(--accent);
+  /* Cormorant's italic defaults to oldstyle figures — "800" renders as "8oo".
+     Lining figures keep the digits full-height at display size. */
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
 }
 
 .priceSub {
