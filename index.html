@@ -168,11 +168,13 @@
     <span class="kicker">Free &middot; no obligation</span>
     <h2>Get your 5-minute website audit</h2>
     <p>Send us your website or Facebook page and we'll reply with a short honest note: what's leaking bookings today, and what we'd fix first.</p>
-    <div class="auditRow">
-      <input placeholder="Business name" aria-label="Business name">
-      <input class="wide" placeholder="Website or Facebook page" aria-label="Website or Facebook page">
-      <a class="btn btnSolid btnCaps" href="mailto:hello@harbourpages.com?subject=Free%20website%20audit%20request">Get my audit</a>
-    </div>
+    <form class="auditRow" id="auditForm" novalidate>
+      <input name="business_name" placeholder="Business name" aria-label="Business name" required maxlength="300">
+      <input class="wide" name="website" placeholder="Website or Facebook page" aria-label="Website or Facebook page" required maxlength="300">
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btnSolid btnCaps" type="submit">Get my audit</button>
+    </form>
+    <p class="auditNote" id="auditNote" hidden></p>
   </section>
 
   <!-- Footer -->
@@ -182,5 +184,45 @@
     <a href="mailto:hello@harbourpages.com">hello@harbourpages.com</a>
   </footer>
 
+<script>
+(function () {
+  var form = document.getElementById("auditForm");
+  var note = document.getElementById("auditNote");
+  var btn = form.querySelector("button");
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var fd = new FormData(form);
+    if (!String(fd.get("business_name")).trim() || !String(fd.get("website")).trim()) {
+      note.hidden = false;
+      note.textContent = "Please fill in both fields — we need somewhere to look.";
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    try {
+      var res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          business_name: fd.get("business_name"),
+          website: fd.get("website"),
+          company: fd.get("company"),
+          source: "landing-audit"
+        })
+      });
+      var out = await res.json();
+      if (!res.ok || !out.ok) throw new Error(out.error || "failed");
+      form.hidden = true;
+      note.hidden = false;
+      note.textContent = "Thank you — your audit request is in. We’ll reply with a short, honest note within one working day.";
+    } catch (err) {
+      note.hidden = false;
+      note.innerHTML = 'Something went wrong on our end. Email us instead: <a href="mailto:hello@harbourpages.com">hello@harbourpages.com</a>';
+      btn.disabled = false;
+      btn.textContent = "Get my audit";
+    }
+  });
+})();
+</script>
 </body>
 </html>

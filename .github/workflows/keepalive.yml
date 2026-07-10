@@ -1,0 +1,16 @@
+# Pings /api/health twice a day so the Supabase free-tier project
+# never pauses for inactivity (it pauses after ~7 idle days).
+name: keepalive
+on:
+  schedule:
+    - cron: "17 6,18 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping health endpoint
+        run: |
+          curl --fail --silent --show-error --max-time 30 \
+            https://harbourpages.com/api/health

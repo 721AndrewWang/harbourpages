@@ -621,6 +621,37 @@ input {
   flex: 1.4;
 }
 
+.auditRow button.btn {
+  border: 0;
+  cursor: pointer;
+}
+
+.auditRow button.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Honeypot field — invisible to humans, present for bots */
+.auditRow .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.auditNote {
+  margin: 18px auto 0;
+  max-width: 560px;
+  text-align: center;
+  font: 400 15px/1.7 var(--sans);
+  color: var(--body);
+}
+
+.auditNote a {
+  color: var(--accent);
+}
+
 /* --- Footer --- */
 .footer {
   background: var(--dark-footer);

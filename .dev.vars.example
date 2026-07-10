@@ -1,0 +1,14 @@
+# Copy to .dev.vars for local `wrangler pages dev`; set the same names as
+# environment variables in the Cloudflare Pages dashboard for production.
+
+# Required — Supabase project (Settings → API)
+SUPABASE_URL=https://YOUR-PROJECT.supabase.co
+SUPABASE_ANON_KEY=YOUR-ANON-KEY
+
+# Optional — email notification via Resend (leads are safe in Supabase either way)
+# RESEND_API_KEY=re_xxxxxxxx
+# NOTIFY_TO=hello@harbourpages.com
+# NOTIFY_FROM=HarbourPages Leads <leads@harbourpages.com>
+
+# Optional — Cloudflare Turnstile (enable if spam gets past the honeypot)
+# TURNSTILE_SECRET_KEY=0x_xxxxxxxx
