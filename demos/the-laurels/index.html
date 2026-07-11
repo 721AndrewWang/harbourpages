@@ -7,84 +7,195 @@
   <title>The Laurels Pub &amp; Restaurant — Killarney (HarbourPages demo)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* The Laurels — 烫金家书:深酒吧绿 × 奶油 × 老金,维多利亚招牌的居中对称 */
+    :root{
+      --green:#0E3B2C; --green-deep:#0A2C21; --cream:#F6F0E2; --cream-warm:#EFE6D0;
+      --gold:#C6A14E; --gold-soft:#D9BC7A; --ink:#20241F; --soft:#6E6A58;
+      --rule:#D8CCAD;
+      --display:'Playfair Display',Georgia,serif; --body:'Work Sans',Verdana,sans-serif;
+    }
+    *{box-sizing:border-box} body{margin:0;background:var(--cream);color:var(--ink);
+      font:400 16px/1.7 var(--body)}
+    .topline{background:var(--green-deep);color:var(--gold-soft);text-align:center;
+      font:500 11px/1 var(--body);letter-spacing:.28em;text-transform:uppercase;padding:9px 12px}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;
+      background:var(--cream);border-bottom:2px solid var(--green)}
+    .wordmark{font:600 24px var(--display);color:var(--green)}
+    .wordmark small{display:block;font:500 10px var(--body);letter-spacing:.3em;
+      text-transform:uppercase;color:var(--soft);margin-top:2px}
+    nav .links a{font:500 13px var(--body);letter-spacing:.12em;text-transform:uppercase;
+      color:var(--green);text-decoration:none;margin-left:26px}
+    nav .links a.book{background:var(--green);color:var(--cream);padding:11px 22px;
+      border-radius:1px}
+    nav .links a.book:hover{background:var(--green-deep)}
+    /* 居中对称的"家书"式 hero */
+    .hero{max-width:820px;margin:0 auto;text-align:center;padding:76px 24px 60px}
+    .crest{font:500 12px var(--body);letter-spacing:.34em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:18px}
+    .crest:before,.crest:after{content:"—";color:var(--rule);margin:0 14px}
+    h1{font:500 clamp(40px,5.4vw,64px)/1.15 var(--display);color:var(--green);margin:0 0 22px}
+    h1 em{font-style:italic;color:var(--gold)}
+    .hero p{max-width:36em;margin:0 auto 14px;color:var(--soft);font-size:16.5px}
+    .hero .stars{font:500 13px var(--body);letter-spacing:.18em;color:var(--green);
+      text-transform:uppercase;margin-top:20px}
+    .hero .actions{margin-top:30px}
+    .btn{display:inline-block;font:600 13px var(--body);letter-spacing:.14em;
+      text-transform:uppercase;text-decoration:none;padding:15px 32px;border-radius:1px}
+    .btn.solid{background:var(--green);color:var(--cream)} .btn.solid:hover{background:var(--green-deep)}
+    .btn.line{border:1px solid var(--green);color:var(--green);margin-left:12px}
+    .orn{ text-align:center;color:var(--gold);font-size:20px;letter-spacing:.6em;padding:6px 0 40px}
+    /* 三联照片版 */
+    .plates{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;
+      margin:0 auto;padding:0 32px 70px}
+    .plate{background:var(--green);padding:10px 10px 14px;color:var(--gold-soft)}
+    .plate .ph{height:200px;background:var(--cream-warm);border:1px solid var(--rule);
+      display:flex;align-items:center;justify-content:center;color:var(--soft);
+      font:italic 400 13px var(--display)}
+    .plate figcaption{font:italic 400 13.5px var(--display);text-align:center;padding-top:10px}
+    /* 经典点线菜单(bill of fare) */
+    .fare{background:var(--green);color:var(--cream);padding:78px 24px}
+    .fare .inner{max-width:760px;margin:0 auto;text-align:center}
+    .fare h2{font:500 34px var(--display);color:var(--gold-soft);margin:0 0 6px}
+    .fare .note{font:italic 400 14.5px var(--display);color:#BFC9B8;margin-bottom:44px}
+    .course{font:500 12px var(--body);letter-spacing:.3em;text-transform:uppercase;
+      color:var(--gold);margin:34px 0 16px}
+    .dish{display:flex;align-items:baseline;gap:10px;text-align:left;margin:13px 0}
+    .dish .n{font:500 19px var(--display)}
+    .dish .d{font:300 13.5px var(--body);color:#C9D2C3}
+    .dish .dots{flex:1;border-bottom:1px dotted #4A6B58;transform:translateY(-4px)}
+    .dish .p{font:500 17px var(--display);color:var(--gold-soft);white-space:nowrap}
+    /* 家史条 */
+    .story{max-width:720px;margin:0 auto;text-align:center;padding:74px 24px 30px}
+    .story h2{font:500 30px var(--display);color:var(--green);margin:0 0 18px}
+    .story p{color:var(--soft)}
+    .story .sig{font:italic 500 22px var(--display);color:var(--gold);margin-top:20px}
+    /* 时长/位置 */
+    .info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;max-width:1000px;
+      margin:0 auto;padding:40px 32px 80px}
+    .info h3{font:500 12px var(--body);letter-spacing:.28em;text-transform:uppercase;
+      color:var(--gold);border-bottom:1px solid var(--rule);padding-bottom:10px}
+    .row{display:flex;justify-content:space-between;font-size:14.5px;padding:7px 0;
+      border-bottom:1px dotted var(--rule)}
+    .row strong{font-weight:600;color:var(--green)}
+    .small{font-size:12px;color:var(--soft);margin-top:10px}
+    .mapph{height:170px;background:var(--cream-warm);border:1px solid var(--rule);
+      display:flex;align-items:center;justify-content:center;color:var(--soft);
+      font:italic 400 13px var(--display)}
+    /* 预订 */
+    .booking{background:var(--green-deep);color:var(--cream);text-align:center;padding:70px 24px}
+    .booking h2{font:500 32px var(--display);color:var(--gold-soft);margin:0 0 8px}
+    .booking p{color:#BFC9B8;max-width:34em;margin:0 auto 26px;font-size:15px}
+    .booking .rowline{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:680px;margin:0 auto}
+    .booking input{flex:1;min-width:130px;padding:14px 16px;background:#12362A;
+      border:1px solid #2E5A47;color:var(--cream);font:400 15px var(--body)}
+    .booking input::placeholder{color:#7FA290}
+    footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+      background:var(--green-deep);color:#9FB4A8;padding:26px 40px;border-top:1px solid #2E5A47;
+      font-size:13px}
+    footer b{font:600 17px var(--display);color:var(--cream)}
+    footer a{color:var(--gold-soft)}
+    @media(max-width:900px){.plates,.info{grid-template-columns:1fr}nav{padding:16px 20px}
+      nav .links a{margin-left:14px}}
+  </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="brand">
-      <span class="brandMark">The <em>Laurels</em></span>
-      <span class="brandTag">Pub &amp; Restaurant &middot; Killarney</span>
-    </div>
-    <div class="navLinks">
-      <a href="#menu">Menu</a>
-      <a href="#hours">Hours</a>
-      <a href="#hours">Find us</a>
-      <a class="btn btnSolid btnSmall" href="#book">Book a table</a>
+  <div class="topline">Four generations of the O'Leary family &middot; Main Street, Killarney</div>
+
+  <nav>
+    <div class="wordmark">The Laurels<small>Pub &amp; Restaurant &middot; Est. over a century</small></div>
+    <div class="links">
+      <a href="#fare">Menu</a><a href="#story">Our story</a><a href="#visit">Visit</a>
+      <a class="book" href="#book">Book a table</a>
     </div>
   </nav>
 
   <header class="hero">
-    <div>
-      <div class="kicker">Four generations of the O'Leary family &middot; over a century on Main Street</div>
-      <h1 style="font-size:clamp(38px, 4.2vw, 60px);">The pub Killarney keeps coming back to.</h1>
-      <p class="heroCopy" style="max-width:32em;">Tiled floors, beamed ceilings, corners built for conversation &mdash; and food that earned its 4.5&#9733; from 2,500+ reviews the slow way. Live music and Irish dancing in season. Book direct, no apps in between.</p>
-      <div class="heroActions">
-        <a class="btn btnSolid" href="#book">Book a table</a>
-        <a class="btn btnOutline" href="#menu">See the menu</a>
-      </div>
+    <div class="crest">Killarney's own since the 1900s</div>
+    <h1>The pub Killarney<br>keeps <em>coming back</em> to.</h1>
+    <p>Tiled floors, beamed ceilings, corners built for conversation &mdash; and food
+       that earned its keep the slow way. Live music and Irish dancing in season.</p>
+    <div class="stars">4.5&#9733; &middot; 2,500+ reviews &middot; Tripadvisor Travelers' Choice</div>
+    <div class="actions">
+      <a class="btn solid" href="#book">Book a table</a><a class="btn line" href="#fare">See the menu</a>
     </div>
-    <figure class="plate">
-      <div class="placeholder" style="height:340px;"><span>[ photo &mdash; the front bar, evening ]</span></div>
-      <figcaption><span>40 Main Street. Plate I. &mdash; the front bar at six.</span></figcaption>
-    </figure>
   </header>
 
-  <section class="band bandAlt menuBand" id="menu">
-    <div class="menuHead">
-      <h2>The menu</h2>
-      <span>Dishes your reviews rave about &mdash; your daily menus go here, editable in a minute</span>
-    </div>
-    <div class="menuGrid">
-      <div class="dish"><div><h3>Bantry Bay mussels</h3><p>White wine, garlic &amp; cream, homemade soda bread</p></div><span class="price">&euro;14.50</span></div>
-      <div class="dish"><div><h3>Famous seafood chowder</h3><p>The one the regulars won't let you skip</p></div><span class="price">&euro;9.50</span></div>
-      <div class="dish"><div><h3>Irish stew</h3><p>Crusty home-baked rolls</p></div><span class="price">&euro;18.95</span></div>
-      <div class="dish"><div><h3>Traditional potato cakes</h3><p>An old house speciality</p></div><span class="price">&euro;12.00</span></div>
-      <div class="dish"><div><h3>Doorstep sandwiches</h3><p>Lunch, cut thick, no apologies</p></div><span class="price">&euro;10.50</span></div>
-      <div class="dish"><div><h3>Sticky toffee pudding</h3><p>&ldquo;Best we've found to date&rdquo; &mdash; a reviewer, recently</p></div><span class="price">&euro;7.50</span></div>
+  <div class="orn">&#10087;</div>
+
+  <div class="plates">
+    <figure class="plate"><div class="ph">[ the front bar, evening ]</div>
+      <figcaption>The front bar at six.</figcaption></figure>
+    <figure class="plate"><div class="ph">[ the dining room ]</div>
+      <figcaption>Two rooms, sixty-five chairs.</figcaption></figure>
+    <figure class="plate"><div class="ph">[ the back yard ]</div>
+      <figcaption>The Back Yard, weather permitting.</figcaption></figure>
+  </div>
+
+  <section class="fare" id="fare">
+    <div class="inner">
+      <h2>Bill of Fare</h2>
+      <div class="note">Dishes your reviews rave about &mdash; your daily menus go here, editable in a minute. Prices shown are samples.</div>
+
+      <div class="course">To begin</div>
+      <div class="dish"><span class="n">Famous seafood chowder</span><span class="dots"></span><span class="p">&euro;9.50</span></div>
+      <div class="dish"><span class="n">Bantry Bay mussels</span><span class="d">white wine, garlic &amp; cream, soda bread</span><span class="dots"></span><span class="p">&euro;14.50</span></div>
+
+      <div class="course">The table</div>
+      <div class="dish"><span class="n">Irish stew</span><span class="d">crusty home-baked rolls</span><span class="dots"></span><span class="p">&euro;18.95</span></div>
+      <div class="dish"><span class="n">Traditional potato cakes</span><span class="d">an old house speciality</span><span class="dots"></span><span class="p">&euro;12.00</span></div>
+      <div class="dish"><span class="n">Doorstep sandwiches</span><span class="d">lunch, cut thick, no apologies</span><span class="dots"></span><span class="p">&euro;10.50</span></div>
+
+      <div class="course">To finish</div>
+      <div class="dish"><span class="n">Sticky toffee pudding</span><span class="d">&ldquo;best we've found to date&rdquo; &mdash; a reviewer</span><span class="dots"></span><span class="p">&euro;7.50</span></div>
     </div>
   </section>
 
-  <section class="band infoGrid" id="hours">
+  <section class="story" id="story">
+    <h2>Kept in the family</h2>
+    <p>Four generations of the O'Leary family have run The Laurels for over a century,
+       and little has changed that didn't need to. Lunch from noon, light bites from three,
+       the night menu from six &mdash; and in season, the music starts when it starts.</p>
+    <div class="sig">&mdash; The O'Learys, Main Street</div>
+  </section>
+
+  <section class="info" id="visit">
     <div>
-      <h3>Opening hours</h3>
-      <div class="hoursRow"><span>Mon &ndash; Thu</span><strong>10:30 &ndash; 23:30</strong></div>
-      <div class="hoursRow"><span>Fri &ndash; Sat</span><strong>10:30 &ndash; 00:30</strong></div>
-      <div class="hoursRow"><span>Sunday</span><strong>12:30 &ndash; 23:00</strong></div>
-      <div class="hoursRow"><span style="font-size:12.5px;color:#8A7E68;">Lunch 12&ndash;3 &middot; light bites 3&ndash;6 &middot; night menu from 6 &mdash; from your public listings, corrected on day one</span><strong></strong></div>
+      <h3>Hours</h3>
+      <div class="row"><span>Mon &ndash; Thu</span><strong>10:30 &ndash; 23:30</strong></div>
+      <div class="row"><span>Fri &ndash; Sat</span><strong>10:30 &ndash; 00:30</strong></div>
+      <div class="row"><span>Sunday</span><strong>12:30 &ndash; 23:00</strong></div>
+      <div class="small">Lunch 12&ndash;3 &middot; light bites 3&ndash;6 &middot; night menu from 6.
+        From your public listings &mdash; corrected on day one.</div>
     </div>
     <div>
       <h3>Find us</h3>
-      <p class="address">40 Main Street,<br>Killarney, Co. Kerry<br>V93 KR52</p>
-      <a class="linkRule" href="tel:+353646631149" style="font-size:14px;">064 663 1149</a>
+      <div class="row"><span>Address</span><strong>40 Main Street</strong></div>
+      <div class="row"><span></span><strong>Killarney, V93 KR52</strong></div>
+      <div class="row"><span>Phone</span><strong>064 663 1149</strong></div>
     </div>
-    <div class="mapSlot placeholder"><span>[ embedded map &mdash; Main Street ]</span></div>
+    <div>
+      <h3>Map</h3>
+      <div class="mapph">[ embedded map &mdash; Main Street ]</div>
+    </div>
   </section>
 
-  <section class="bandDark bookBand" id="book">
+  <section class="booking" id="book">
     <h2>Book a table</h2>
-    <p>Booked directly with us &mdash; confirmed by text within the hour, no commission to anyone.</p>
-    <div class="bookRow">
+    <p>Booked directly with us &mdash; confirmed within the hour, no commission to anyone.</p>
+    <div class="rowline">
       <input placeholder="Date" aria-label="Date">
       <input placeholder="Time" aria-label="Time">
       <input placeholder="Guests" aria-label="Guests">
-      <a class="btn btnSolid btnCaps" href="mailto:hello@harbourpages.com?subject=Table%20booking%20(Laurels%20demo)">Reserve</a>
+      <a class="btn solid" style="background:var(--gold);color:var(--green-deep)"
+         href="mailto:hello@harbourpages.com?subject=Table%20booking%20(Laurels%20demo)">Reserve</a>
     </div>
   </section>
 
-  <footer class="footer">
-    <span class="brandMark" style="font-style:normal;">The Laurels Pub &amp; Restaurant</span>
+  <footer>
+    <b>The Laurels Pub &amp; Restaurant</b>
     <a href="https://harbourpages.com">Site by HarbourPages &mdash; take direct bookings &rarr;</a>
   </footer>
 
