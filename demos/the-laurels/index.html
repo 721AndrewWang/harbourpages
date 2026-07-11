@@ -84,6 +84,8 @@
     .mapph{height:170px;background:var(--cream-warm);border:1px solid var(--rule);
       display:flex;align-items:center;justify-content:center;color:var(--soft);
       font:italic 400 13px var(--display)}
+    iframe.mapph{width:100%;height:170px;border:1px solid var(--rule);display:block;
+      filter:sepia(.18) saturate(.85)}
     /* 预订 */
     .booking{background:var(--green-deep);color:var(--cream);text-align:center;padding:70px 24px}
     .booking h2{font:500 32px var(--display);color:var(--gold-soft);margin:0 0 8px}
@@ -179,7 +181,9 @@
     </div>
     <div>
       <h3>Map</h3>
-      <div class="mapph">[ embedded map &mdash; Main Street ]</div>
+      <iframe class="mapph" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Map — The Laurels, 40 Main Street, Killarney"
+        src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sThe+Laurels+Pub,+40+Main+Street,+Killarney!6i16"></iframe>
     </div>
   </section>
 
