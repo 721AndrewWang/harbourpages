@@ -1,0 +1,4 @@
+# Demo pages are speculative previews for the business owners only —
+# never search-indexed. The email recipient is the only intended audience.
+/demos/*
+  X-Robots-Tag: noindex, nofollow
