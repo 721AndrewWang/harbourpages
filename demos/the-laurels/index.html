@@ -53,6 +53,7 @@
     .plate .ph{height:200px;background:var(--cream-warm);border:1px solid var(--rule);
       display:flex;align-items:center;justify-content:center;color:var(--soft);
       font:italic 400 13px var(--display)}
+    img.ph{width:100%;height:200px;object-fit:cover;display:block;padding:0}
     .plate figcaption{font:italic 400 13.5px var(--display);text-align:center;padding-top:10px}
     /* 经典点线菜单(bill of fare) */
     .fare{background:var(--green);color:var(--cream);padding:78px 24px}
@@ -126,12 +127,12 @@
   <div class="orn">&#10087;</div>
 
   <div class="plates">
-    <figure class="plate"><div class="ph">[ the front bar, evening ]</div>
-      <figcaption>The front bar at six.</figcaption></figure>
-    <figure class="plate"><div class="ph">[ the dining room ]</div>
-      <figcaption>Two rooms, sixty-five chairs.</figcaption></figure>
-    <figure class="plate"><div class="ph">[ the back yard ]</div>
-      <figcaption>The Back Yard, weather permitting.</figcaption></figure>
+    <figure class="plate"><img class="ph" src="assets/front.webp" alt="The Laurels on Main Street, window boxes in bloom" loading="lazy">
+      <figcaption>Forty Main Street, in bloom.</figcaption></figure>
+    <figure class="plate"><img class="ph" src="assets/curry.webp" alt="Chickpea curry with rice and poppadom" loading="lazy">
+      <figcaption>From the lunch menu.</figcaption></figure>
+    <figure class="plate"><img class="ph" src="assets/chicken.webp" alt="Prosciutto-wrapped chicken with pesto" loading="lazy">
+      <figcaption>From the kitchen, evening.</figcaption></figure>
   </div>
 
   <section class="fare" id="fare">
