@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Demo site by HarbourPages — Ciamei, the Italian trattoria at the back of Blackrock Market. Fresh pasta, wood-fired pizza, Roman hospitality. Book a table directly, no apps in between.">
+  <title>Ciamei — Blackrock Market (HarbourPages demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    /* Ciamei — trattoria del mercato: floured marble × pomodoro gingham × Roman street-plate caps */
+    :root{
+      --flour:#FBF7EF; --marble:#F1EBDD; --ink:#2C2318; --faint:#7A6F5C;
+      --pomodoro:#B23A2A; --pomodoro-deep:#8C2B1E; --basil:#39543B; --basil-deep:#2C4230;
+      --stone:#C9BFA9; --espresso:#241C12;
+      --roman:'Marcellus',Georgia,serif; --hand:'Lora',Georgia,serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--flour);color:var(--ink);font:400 16.5px/1.75 var(--hand)}
+    .gingham{height:18px;background:
+      repeating-linear-gradient(90deg,rgba(178,58,42,.30) 0 9px,transparent 9px 18px),
+      repeating-linear-gradient(0deg,rgba(178,58,42,.30) 0 9px,transparent 9px 18px),
+      var(--flour);border-bottom:1px solid rgba(178,58,42,.25)}
+    /* nav */
+    nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+      padding:20px 40px;border-bottom:1px solid var(--stone);background:var(--flour)}
+    .wordmark{font:400 27px var(--roman);letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+    .wordmark small{display:block;font:italic 500 12.5px var(--hand);letter-spacing:.08em;
+      text-transform:none;color:var(--pomodoro);margin-top:1px}
+    .navlinks{display:flex;align-items:center;flex-wrap:wrap;gap:20px}
+    .navlinks a{font:400 13px var(--roman);letter-spacing:.22em;text-transform:uppercase;
+      color:var(--ink);text-decoration:none}
+    .navlinks a:hover{color:var(--pomodoro)}
+    .navlinks a.navbook{background:var(--pomodoro);color:var(--flour);padding:11px 22px}
+    .navlinks a.navbook:hover{background:var(--pomodoro-deep);color:var(--flour)}
+    /* hero: centred day-menu card */
+    .hero{max-width:820px;margin:0 auto;text-align:center;padding:66px 28px 46px}
+    .targa{display:inline-block;background:linear-gradient(#F5F0E4,#EBE4D2);
+      border:1px solid var(--stone);outline:1px solid var(--stone);outline-offset:-6px;
+      padding:12px 34px;font:400 13px var(--roman);letter-spacing:.3em;text-transform:uppercase;
+      color:#5F5644;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+    h1{font:400 clamp(34px,5.4vw,58px)/1.16 var(--roman);margin:26px 0 18px;color:var(--ink)}
+    h1 em{font-style:normal;color:var(--pomodoro)}
+    .hero p{color:var(--faint);max-width:36em;margin:0 auto}
+    .meta{display:flex;justify-content:center;gap:14px 26px;flex-wrap:wrap;margin-top:24px;
+      font:400 12.5px var(--roman);letter-spacing:.18em;text-transform:uppercase;color:var(--basil)}
+    .meta span:before{content:"\273D";color:var(--pomodoro);margin-right:8px}
+    .btnrow{margin-top:32px}
+    .btn{display:inline-block;font:400 13px var(--roman);letter-spacing:.2em;text-transform:uppercase;
+      text-decoration:none;padding:15px 30px}
+    .btn.solid{background:var(--pomodoro);color:var(--flour)} .btn.solid:hover{background:var(--pomodoro-deep)}
+    .btn.line{border:1px solid var(--ink);color:var(--ink);margin-left:10px}
+    /* photo strip */
+    .strip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:1080px;
+      margin:0 auto;padding:14px 28px 64px}
+    .ph{background:var(--marble);border:1px solid var(--stone);min-height:230px;
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
+      color:var(--faint);font:italic 400 13.5px var(--hand)}
+    /* section header plates */
+    .plate{text-align:center;padding:56px 24px 6px}
+    .plate .targa{padding:14px 44px;font-size:15px}
+    .plate .sotto{font:italic 400 15px var(--hand);color:var(--faint);margin-top:12px}
+    /* quote band */
+    .lode{background:var(--basil);color:var(--flour);text-align:center;padding:62px 28px;
+      border-top:1px solid var(--basil-deep);border-bottom:1px solid var(--basil-deep)}
+    .lode blockquote{font:italic 500 clamp(22px,3.2vw,32px)/1.4 var(--hand);max-width:24em;margin:0 auto}
+    .lode .who{font:400 11.5px var(--roman);letter-spacing:.3em;text-transform:uppercase;
+      color:#C9D6C4;margin-top:18px}
+    .lode .who b{color:var(--flour);font-weight:400}
+    /* menu */
+    .cucina{max-width:960px;margin:0 auto;padding:16px 32px 30px}
+    .hedge{text-align:center;font:italic 400 14.5px var(--hand);color:var(--faint);margin:0 0 36px}
+    .courses{display:grid;grid-template-columns:1fr 1fr;gap:18px 56px}
+    .course h3{font:400 15px var(--roman);letter-spacing:.26em;text-transform:uppercase;
+      color:var(--pomodoro);border-bottom:1px solid var(--stone);padding-bottom:10px;margin:26px 0 8px}
+    .course h3 i{font:italic 400 13px var(--hand);letter-spacing:0;text-transform:none;color:var(--faint)}
+    .dish{display:flex;align-items:baseline;gap:10px;padding:13px 0}
+    .dish .nm{font:400 17.5px var(--roman)}
+    .dish .nm small{display:block;font:italic 400 13.5px var(--hand);color:var(--faint);letter-spacing:0}
+    .dish .dots{flex:1;border-bottom:2px dotted var(--stone);transform:translateY(-5px);min-width:24px}
+    .dish .pr{font:400 16px var(--roman);color:var(--pomodoro)}
+    .byob{max-width:960px;margin:0 auto 8px;padding:0 32px 56px;text-align:center;
+      font:italic 400 15px var(--hand);color:var(--basil)}
+    /* story */
+    .storia{background:var(--marble);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone)}
+    .storia .inner{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;
+      gap:48px;padding:26px 32px 64px;align-items:center}
+    .storia p{color:#5F5545;margin:0 0 16px}
+    .storia p b{color:var(--ink);font-weight:600}
+    .storia .ph{min-height:300px;background:var(--flour)}
+    .storia .postscript{font:italic 400 13.5px var(--hand);color:var(--faint)}
+    /* visit grid */
+    .visita{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;
+      gap:18px;padding:20px 28px 64px}
+    .cella{background:#fff;border:1px solid var(--stone);padding:0 0 26px}
+    .cella .checktop{height:10px;background:
+      repeating-linear-gradient(90deg,rgba(178,58,42,.35) 0 8px,transparent 8px 16px),
+      repeating-linear-gradient(0deg,rgba(178,58,42,.35) 0 8px,transparent 8px 16px),#fff;
+      border-bottom:1px solid rgba(178,58,42,.2);margin-bottom:22px}
+    .cella h3{font:400 13.5px var(--roman);letter-spacing:.28em;text-transform:uppercase;
+      color:var(--basil);margin:0 26px 14px}
+    .riga{display:flex;justify-content:space-between;gap:14px;font-size:15px;padding:5px 26px}
+    .riga span:first-child{font-style:italic;color:var(--faint)}
+    .riga a{color:var(--ink)}
+    .cella .small{font:italic 400 12.5px var(--hand);color:var(--faint);margin:12px 26px 0}
+    .cella iframe{width:calc(100% - 52px);height:190px;border:1px solid var(--stone);
+      display:block;margin:0 26px;filter:sepia(.22) saturate(.85)}
+    /* booking band */
+    .bookband{background:var(--espresso);color:var(--flour);text-align:center;padding:66px 28px}
+    .bookband h2{font:400 32px var(--roman);letter-spacing:.16em;text-transform:uppercase;margin:0 0 6px}
+    .bookband .sotto{font:italic 400 16px var(--hand);color:#B7A98F;margin-bottom:30px}
+    .rowline{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:660px;margin:0 auto}
+    .rowline input{flex:1;min-width:130px;padding:14px 16px;background:#332918;
+      border:1px solid #55452C;color:var(--flour);font:400 15px var(--hand)}
+    .rowline input::placeholder{color:#8F7F63}
+    /* footer */
+    footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+      padding:26px 40px;color:var(--faint);font-size:13.5px}
+    footer b{font:400 15px var(--roman);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+    footer a{color:var(--pomodoro)}
+    @media(max-width:880px){
+      .strip,.courses,.visita{grid-template-columns:1fr}
+      .storia .inner{grid-template-columns:1fr}
+      nav{justify-content:center;text-align:center;padding:18px 16px}
+      .navlinks{justify-content:center;gap:14px}
+      .hero{padding:48px 20px 36px}
+      .btn.line{margin-left:0;margin-top:10px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gingham" aria-hidden="true"></div>
+
+  <nav>
+    <div class="wordmark">Ciamei<small>Trattoria italiana &middot; Blackrock Market</small></div>
+    <div class="navlinks">
+      <a href="#cucina">La cucina</a><a href="#storia">La storia</a><a href="#visita">Find us</a>
+      <a class="navbook" href="#prenota">Book a table</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="targa">Blackrock Market &middot; Co. Dublin</div>
+    <h1>A little corner of <em>Rome</em>, at the back of the market.</h1>
+    <p>Fresh pasta, thin-crust pizza from the wood-fired oven, and proper espresso &mdash;
+       served from a cottage kitchen tucked inside Blackrock Market.
+       Small room, big welcome. Bring your own bottle; leave room for the tiramisu.</p>
+    <div class="meta">
+      <span>4.5&#9733; &middot; 318 Google reviews</span>
+      <span>Wood-fired oven</span>
+      <span>BYOB welcome</span>
+    </div>
+    <div class="btnrow">
+      <a class="btn solid" href="#prenota">Book a table</a>
+      <a class="btn line" href="#cucina">See the menu</a>
+    </div>
+  </header>
+
+  <div class="strip">
+    <div class="ph">[ photo &mdash; the cottage at the back of the market ]</div>
+    <div class="ph">[ photo &mdash; pizza leaving the wood-fired oven ]</div>
+    <div class="ph">[ photo &mdash; Saturday lunch, every table full ]</div>
+  </div>
+
+  <section class="lode">
+    <blockquote>&ldquo;Absolutely the tastiest Italian food I have ever had.&rdquo;</blockquote>
+    <div class="who">TripAdvisor review &middot; <b>rated 4.5 of 5, ranked in Blackrock&rsquo;s top restaurants</b></div>
+  </section>
+
+  <div class="plate" id="cucina">
+    <div class="targa">La Cucina</div>
+    <div class="sotto">the kitchen</div>
+  </div>
+  <section class="cucina">
+    <div class="hedge">From your public listings &mdash; your live menu goes here, editable in a minute. Prices shown are samples.</div>
+    <div class="courses">
+      <div class="course">
+        <h3>Per iniziare <i>&mdash; to start</i></h3>
+        <div class="dish"><div class="nm">Fritto misto<small>calamari &amp; prawns &mdash; a review favourite</small></div><div class="dots"></div><div class="pr">&euro;13.50</div></div>
+        <div class="dish"><div class="nm">Arancini<small>crisp, from the pan</small></div><div class="dots"></div><div class="pr">&euro;8.50</div></div>
+        <h3>Dal forno <i>&mdash; wood-fired</i></h3>
+        <div class="dish"><div class="nm">Margherita<small>thin crust, straight from the oven</small></div><div class="dots"></div><div class="pr">&euro;11.00</div></div>
+        <div class="dish"><div class="nm">Pepperoni piccante<small>the spicy one</small></div><div class="dots"></div><div class="pr">&euro;13.50</div></div>
+      </div>
+      <div class="course">
+        <h3>La pasta</h3>
+        <div class="dish"><div class="nm">Clam linguine<small>vongole, the classic</small></div><div class="dots"></div><div class="pr">&euro;17.50</div></div>
+        <div class="dish"><div class="nm">Pumpkin tortelloni with prawns<small>the one reviewers name-check</small></div><div class="dots"></div><div class="pr">&euro;16.50</div></div>
+        <div class="dish"><div class="nm">Mushroom gnocchi<small>soft, generous</small></div><div class="dots"></div><div class="pr">&euro;15.50</div></div>
+        <div class="dish"><div class="nm">Rigatoni with Italian sausage<small>rich and honest</small></div><div class="dots"></div><div class="pr">&euro;16.00</div></div>
+        <h3>Dolci</h3>
+        <div class="dish"><div class="nm">Tiramisu<small>&ldquo;a particular highlight&rdquo;, say the reviews</small></div><div class="dots"></div><div class="pr">&euro;6.50</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="byob">Bring your own bottle &mdash; corkage &euro;10 a table, per your listings. Italian wines also poured.</div>
+
+  <section class="storia" id="storia">
+    <div class="plate">
+      <div class="targa">La Storia</div>
+      <div class="sotto">the story, as your public listings tell it &mdash; easy to correct in a minute</div>
+    </div>
+    <div class="inner">
+      <div>
+        <p><b>The name comes from Rome</b> &mdash; the caf&eacute; in the Eternal City that owner
+           <b>Claudio&rsquo;s grandfather</b> loved best. Claudio, a trained barista and
+           silver-service waiter, came to Ireland in 2005 and brought the family&rsquo;s
+           attention to detail with him.</p>
+        <p>Regulars call it <b>Blackrock&rsquo;s best-kept secret</b>: a snug cottage at the back
+           of the weekend market, off Georges Avenue, where the pizza oven crackles and the
+           menu changes with what&rsquo;s good. Sharing plates, honest prices, and a host who
+           knows half the room by name.</p>
+        <p class="postscript">&ldquo;We like to keep the price low &mdash; that&rsquo;s the Italian way.&rdquo;
+           &mdash; Claudio, from your public listing</p>
+      </div>
+      <div class="ph">[ photo &mdash; Claudio at the counter, espresso machine behind ]</div>
+    </div>
+  </section>
+
+  <div class="plate" id="visita">
+    <div class="targa">Dove Siamo</div>
+    <div class="sotto">find us</div>
+  </div>
+  <section class="visita">
+    <div class="cella">
+      <div class="checktop" aria-hidden="true"></div>
+      <h3>Hours</h3>
+      <div class="riga"><span>Mon &ndash; Wed</span><span>Closed</span></div>
+      <div class="riga"><span>Thu &ndash; Fri</span><span>18:00 &ndash; 22:30</span></div>
+      <div class="riga"><span>Saturday</span><span>12:00 &ndash; 16:00 &middot; 18:00 &ndash; 22:30</span></div>
+      <div class="riga"><span>Sunday</span><span>12:00 &ndash; 16:00</span></div>
+      <div class="small">Hours from your public listings &mdash; corrected on day one.
+        The room is small; booking ahead is wise.</div>
+    </div>
+    <div class="cella">
+      <div class="checktop" aria-hidden="true"></div>
+      <h3>The way in</h3>
+      <div class="riga"><span>Where</span><span>19a Market, Blackrock, Co. Dublin</span></div>
+      <div class="riga"><span>Look for</span><span>the cottage at the back of Blackrock Market</span></div>
+      <div class="riga"><span>Phone</span><span><a href="tel:+353868978418">+353 86 897 8418</a></span></div>
+      <div class="riga"><span>Instagram</span><span>@ciameicafe</span></div>
+    </div>
+    <div class="cella">
+      <div class="checktop" aria-hidden="true"></div>
+      <h3>Map</h3>
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Map — Ciamei, Blackrock Market, 19a Main Street, Blackrock, Co. Dublin"
+        src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sCiamei,+Blackrock+Market,+19a+Main+Street,+Blackrock,+Co.+Dublin!6i16"></iframe>
+    </div>
+  </section>
+
+  <section class="bookband" id="prenota">
+    <h2>Prenota &mdash; book a table</h2>
+    <div class="sotto">Booked directly with us &mdash; no apps, no commission to anyone in between.</div>
+    <div class="rowline">
+      <input placeholder="Date" aria-label="Date">
+      <input placeholder="Time" aria-label="Time">
+      <input placeholder="Guests" aria-label="Guests">
+      <a class="btn solid" href="mailto:hello@harbourpages.com?subject=Table%20booking%20(Ciamei%20demo)">Reserve</a>
+    </div>
+  </section>
+
+  <footer>
+    <b>Ciamei &middot; Blackrock Market</b>
+    <a href="https://harbourpages.com">Site by HarbourPages &mdash; take direct bookings &rarr;</a>
+    <div style="width:100%;font-size:11.5px;opacity:.7;line-height:1.6">Speculative preview by HarbourPages, built from public listings &mdash; not affiliated with or endorsed by Ciamei. Unlisted and hidden from search engines. If you&rsquo;d rather it wasn&rsquo;t here, one email takes it down the same day: hello@harbourpages.com</div>
+  </footer>
+
+</body>
+</html>

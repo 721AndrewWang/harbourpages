@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Demo site by HarbourPages — FIG, the brunch spot on George's Avenue, Blackrock. Menu, opening hours, and a table when you want one. Book a table directly, no apps in between.">
+  <title>FIG — Blackrock (HarbourPages demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* FIG — a ripe fig on a white plate: milk-white room, fig-plum ink, raspberry flesh,
+       leaf-green asides. Soft serif (Fraunces) + warm grotesque (Karla), arches & pills —
+       daytime café light, nothing like a pub. */
+    :root{
+      --milk:#FCF9F5; --milk-deep:#F5EEE9; --ink:#342534;
+      --fig:#5A3560; --fig-deep:#37223E; --flesh:#C64F6B; --flesh-soft:#E9B9C1;
+      --leaf:#6D7C4E; --line:#E5DAD8; --quiet:#8A7A85;
+      --disp:'Fraunces',Georgia,serif; --body:'Karla',Verdana,sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--milk);color:var(--ink);font:400 16.5px/1.7 var(--body)}
+    /* ---------- nav ---------- */
+    nav{display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:22px 44px;background:var(--milk)}
+    .wordmark{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+    .wordmark svg{width:26px;height:32px;flex:none}
+    .wordmark .wm{font:600 30px/1 var(--disp);letter-spacing:-.02em}
+    .wordmark small{display:block;font:600 10px var(--body);letter-spacing:.26em;
+      text-transform:uppercase;color:var(--quiet);margin-top:3px}
+    .links{display:flex;align-items:center;gap:26px}
+    .links a{font:600 13px var(--body);letter-spacing:.1em;text-transform:uppercase;
+      color:var(--fig);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
+    .links a:hover{border-bottom-color:var(--flesh)}
+    .links a.cta{background:var(--fig);color:var(--milk);padding:12px 24px;border-radius:999px;
+      border-bottom:none}
+    .links a.cta:hover{background:var(--fig-deep)}
+    /* ---------- hero ---------- */
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+      max-width:1120px;margin:0 auto;padding:56px 44px 64px}
+    .kicker{display:inline-block;font:700 12px var(--body);letter-spacing:.22em;
+      text-transform:uppercase;color:var(--flesh);background:#F7E4E7;border-radius:999px;
+      padding:8px 16px;margin-bottom:22px}
+    h1{font:500 clamp(42px,5.6vw,66px)/1.08 var(--disp);letter-spacing:-.015em;margin:0 0 20px}
+    h1 em{font-style:italic;color:var(--fig)}
+    .hero p{max-width:33em;color:#5C4B58;margin:0 0 10px}
+    .hero .plainnote{font-size:14px;color:var(--quiet)}
+    .btnrow{margin:28px 0 26px}
+    .btn{display:inline-block;font:700 13.5px var(--body);letter-spacing:.08em;
+      text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:999px}
+    .btn.solid{background:var(--fig);color:var(--milk)} .btn.solid:hover{background:var(--fig-deep)}
+    .btn.line{border:1.5px solid var(--fig);color:var(--fig);margin-left:10px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badges span{font:600 12px var(--body);letter-spacing:.06em;color:var(--leaf);
+      border:1px solid #D3D9C3;background:#F4F6EC;border-radius:999px;padding:6px 14px}
+    /* the arch — a café-window photo placeholder */
+    .arch{border-radius:300px 300px 18px 18px;background:var(--milk-deep);
+      border:1px solid var(--line);min-height:440px;display:flex;align-items:center;
+      justify-content:center;text-align:center;padding:30px;
+      color:var(--quiet);font:italic 400 14px var(--disp)}
+    /* ---------- photo band ---------- */
+    .band{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;max-width:1120px;
+      margin:0 auto;padding:0 44px 72px}
+    .band .ph{border-radius:18px;background:var(--milk-deep);border:1px solid var(--line);
+      min-height:210px;display:flex;align-items:center;justify-content:center;text-align:center;
+      padding:24px;color:var(--quiet);font:italic 400 13.5px var(--disp)}
+    /* ---------- menu ---------- */
+    .menucard{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:78px 24px}
+    .menucard .inner{max-width:980px;margin:0 auto}
+    .menucard h2{font:500 40px var(--disp);letter-spacing:-.015em;margin:0}
+    .menucard h2 em{font-style:italic;color:var(--flesh)}
+    .menunote{color:var(--quiet);font-size:13.5px;margin:10px 0 44px;max-width:44em}
+    .courses{display:grid;grid-template-columns:1.3fr .7fr;gap:56px}
+    .coursehead{font:700 12px var(--body);letter-spacing:.26em;text-transform:uppercase;
+      color:var(--leaf);border-bottom:2px solid var(--line);padding-bottom:10px;margin:0 0 6px}
+    .dishrow{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;
+      padding:15px 0;border-bottom:1px dashed var(--line)}
+    .dishrow h3{margin:0;font:500 20px var(--disp);letter-spacing:-.01em}
+    .dishrow p{margin:3px 0 0;color:#77677A;font-size:14px}
+    .dishrow .p{font:500 18px var(--disp);color:var(--fig);white-space:nowrap}
+    .veg{font:700 10.5px var(--body);color:var(--leaf);letter-spacing:.08em;vertical-align:2px}
+    /* ---------- kind words ---------- */
+    .kindwords{max-width:1120px;margin:0 auto;padding:74px 44px 30px;text-align:center}
+    .kindwords h2{font:500 32px var(--disp);margin:0 0 34px}
+    .kindwords h2 em{font-style:italic;color:var(--flesh)}
+    .kwgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;text-align:left}
+    .kw{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 22px}
+    .kw .q{font:italic 500 19px/1.45 var(--disp);margin:0 0 12px}
+    .kw .src{font:600 11.5px var(--body);letter-spacing:.16em;text-transform:uppercase;
+      color:var(--quiet)}
+    /* ---------- hours + visit ---------- */
+    .visitwrap{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:24px;max-width:1120px;
+      margin:0 auto;padding:44px 44px 84px}
+    .cell{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 28px}
+    .cell h3{font:700 12px var(--body);letter-spacing:.26em;text-transform:uppercase;
+      color:var(--leaf);margin:0 0 16px}
+    .hrow{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;
+      padding:7px 0;border-bottom:1px dashed var(--line)}
+    .hrow strong{font-weight:700;color:var(--fig)}
+    .smallnote{font-size:12px;color:var(--quiet);margin-top:12px;line-height:1.6}
+    .cell a{color:var(--fig)}
+    iframe.mapframe{width:100%;height:210px;border:1px solid var(--line);border-radius:12px;
+      display:block;filter:saturate(.75)}
+    /* ---------- booking band ---------- */
+    .bookband{background:var(--fig-deep);color:var(--milk);text-align:center;padding:76px 24px}
+    .bookband h2{font:500 38px var(--disp);margin:0 0 10px}
+    .bookband h2 em{font-style:italic;color:var(--flesh-soft)}
+    .bookband p{color:#C9B3CB;max-width:36em;margin:0 auto 28px;font-size:15px}
+    .rowline{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:660px;margin:0 auto 18px}
+    .rowline input{flex:1;min-width:120px;padding:14px 18px;background:#452B4C;
+      border:1px solid #5E3F66;border-radius:999px;color:var(--milk);font:400 15px var(--body)}
+    .rowline input::placeholder{color:#A98BAE}
+    .rowline .btn.solid{background:var(--flesh);color:#fff}
+    .rowline .btn.solid:hover{background:#B23F5B}
+    .bookband .alt{font-size:13.5px;color:#C9B3CB}
+    .bookband .alt a{color:var(--flesh-soft)}
+    /* ---------- footer ---------- */
+    footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+      background:var(--milk);color:var(--quiet);padding:28px 44px;font-size:13px;
+      border-top:1px solid var(--line)}
+    footer b{font:600 18px var(--disp);color:var(--ink)}
+    footer a{color:var(--fig)}
+    /* ---------- responsive ---------- */
+    @media(max-width:920px){
+      .hero{grid-template-columns:1fr;gap:34px;padding-top:38px}
+      .arch{min-height:280px;border-radius:200px 200px 16px 16px}
+      .band,.kwgrid,.visitwrap,.courses{grid-template-columns:1fr}
+      .courses{gap:34px}
+    }
+    @media(max-width:700px){
+      nav{flex-direction:column;padding:16px 18px 14px}
+      .links{gap:8px 18px;flex-wrap:wrap;justify-content:center}
+      .hero,.band,.kindwords,.visitwrap{padding-left:20px;padding-right:20px}
+      .btn.line{margin-left:0;margin-top:10px}
+      footer{padding:24px 20px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="wordmark" href="#top" aria-label="FIG, Blackrock — home">
+      <svg viewBox="0 0 40 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 8 C21 4 24 1.5 27.5 1 C25.5 3.5 24.5 5.5 24.7 8.6 C32.5 11 37 18.5 37 27 C37 38.5 29.5 46 20 46 C10.5 46 3 38.5 3 27 C3 18.5 7.5 11 15.3 8.6 C15.5 5.5 14.5 3.5 12.5 1 C16 1.5 19 4 19 8 Z" fill="#5A3560"/>
+        <ellipse cx="20" cy="29" rx="9" ry="10.5" fill="#C64F6B" opacity=".85"/>
+        <ellipse cx="20" cy="29" rx="4" ry="5" fill="#E9B9C1"/>
+      </svg>
+      <span><span class="wm">fig</span><small>George's Avenue &middot; Blackrock</small></span>
+    </a>
+    <div class="links">
+      <a href="#menu">Menu</a><a href="#hours">Hours</a><a href="#visit">Find us</a>
+      <a class="cta" href="#book">Book a table</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <div class="kicker">4.5&#9733; &middot; 530 Google reviews &middot; Blackrock village</div>
+      <h1>Sunny-side mornings on <em>George&rsquo;s Avenue.</em></h1>
+      <p>Shakshuka straight from the pan, French toast with a following, and the kind of
+         welcome people go home and write reviews about. A new name on a well-loved corner
+         of Blackrock &mdash; a few minutes&rsquo; stroll from the Dart.</p>
+      <p class="plainnote">Vegetarian and vegan options across the card, and diners report
+         gluten-free bread, hash browns and a dedicated fryer &mdash; just ask at the door.</p>
+      <div class="btnrow">
+        <a class="btn solid" href="#book">Book a table</a>
+        <a class="btn line" href="#menu">See the menu</a>
+      </div>
+      <div class="badges">
+        <span>Brunch, seven days</span><span>Vegan options</span>
+        <span>Gluten-free friendly</span><span>Outdoor tables</span><span>Coffee to go</span>
+      </div>
+    </div>
+    <div class="arch">[ photo &mdash; the front room in morning light, tables set ]</div>
+  </header>
+
+  <div class="band">
+    <div class="ph">[ photo &mdash; shakshuka, straight off the pass ]</div>
+    <div class="ph">[ photo &mdash; weekend brunch, the room mid-buzz ]</div>
+    <div class="ph">[ photo &mdash; scones, jam &amp; cream at the window seat ]</div>
+  </div>
+
+  <section class="menucard" id="menu">
+    <div class="inner">
+      <h2>The brunch <em>card</em></h2>
+      <div class="menunote">From your public listings &mdash; your live menu goes here,
+        editable in a minute. Dishes below are the ones your reviews mention; prices shown are samples.</div>
+      <div class="courses">
+        <div>
+          <h3 class="coursehead">From the pan</h3>
+          <div class="dishrow"><div><h3>Shakshuka <span class="veg">V</span></h3>
+            <p>Eggs baked in spiced tomato, toasted sourdough</p></div><div class="p">&euro;13.50</div></div>
+          <div class="dishrow"><div><h3>French toast <span class="veg">V</span></h3>
+            <p>The one the reviews keep mentioning &mdash; seasonal fruit, maple</p></div><div class="p">&euro;12.50</div></div>
+          <div class="dishrow"><div><h3>Eggs Benedict</h3>
+            <p>Poached eggs, hollandaise, toasted muffin</p></div><div class="p">&euro;13.90</div></div>
+          <div class="dishrow"><div><h3>Monsieur Madame</h3>
+            <p>The croque, crowned with a fried egg</p></div><div class="p">&euro;12.90</div></div>
+          <div class="dishrow"><div><h3>Full Irish</h3>
+            <p>The works, on one proper plate</p></div><div class="p">&euro;15.50</div></div>
+        </div>
+        <div>
+          <h3 class="coursehead">Sides, bakes &amp; juice</h3>
+          <div class="dishrow"><div><h3>Hash browns <span class="veg">GF</span></h3>
+            <p>&ldquo;Some of the best&rdquo; &mdash; more than one reviewer</p></div><div class="p">&euro;5.00</div></div>
+          <div class="dishrow"><div><h3>Scone, jam &amp; cream</h3>
+            <p>Morning-baked, goes early at weekends</p></div><div class="p">&euro;4.50</div></div>
+          <div class="dishrow"><div><h3>Fresh orange juice</h3>
+            <p>Squeezed, not poured</p></div><div class="p">&euro;4.50</div></div>
+          <div class="dishrow"><div><h3>Coffee</h3>
+            <p>Oat &amp; almond available</p></div><div class="p">from &euro;3.60</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kindwords">
+    <h2>What the reviews <em>keep saying</em></h2>
+    <div class="kwgrid">
+      <div class="kw"><p class="q">&ldquo;The most kindhearted people.&rdquo;</p>
+        <div class="src">A Google reviewer, on the welcome</div></div>
+      <div class="kw"><p class="q">Generous portions, a varied menu, and a room reviewers
+        call gorgeous since the refit.</p>
+        <div class="src">Recurring themes across 530 reviews</div></div>
+      <div class="kw"><p class="q">A proper weekend buzz &mdash; regulars suggest coming
+        early for a table.</p>
+        <div class="src">The honest bit &mdash; it fills up</div></div>
+    </div>
+  </section>
+
+  <section class="visitwrap" id="hours">
+    <div class="cell">
+      <h3>Opening hours</h3>
+      <div class="hrow"><span>Monday &ndash; Tuesday</span><strong>9:00 &ndash; 16:00</strong></div>
+      <div class="hrow"><span>Wednesday &ndash; Friday</span><strong>8:00 &ndash; 16:00</strong></div>
+      <div class="hrow"><span>Saturday</span><strong>9:00 &ndash; 17:00</strong></div>
+      <div class="hrow"><span>Sunday</span><strong>10:00 &ndash; 17:00</strong></div>
+      <div class="smallnote">Hours from your public listings &mdash; corrected on day one.</div>
+    </div>
+    <div class="cell" id="visit">
+      <h3>Find us</h3>
+      <div class="hrow"><span>Address</span><strong>5a George&rsquo;s Ave</strong></div>
+      <div class="hrow"><span></span><strong>Newtown Blackrock</strong></div>
+      <div class="hrow"><span></span><strong>Blackrock, Co. Dublin, A94 XK11</strong></div>
+      <div class="hrow"><span>Phone</span><strong><a href="tel:+35312108927">(01) 210 8927</a></strong></div>
+      <div class="smallnote">Just off the village &mdash; Blackrock Dart and the seafront
+        a short stroll away.</div>
+    </div>
+    <div class="cell">
+      <h3>Map</h3>
+      <iframe class="mapframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Map — FIG, 5a George's Ave, Blackrock, Co. Dublin"
+        src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sFIG,+5a+George's+Ave,+Newtown+Blackrock,+Blackrock,+Co.+Dublin!6i16"></iframe>
+    </div>
+  </section>
+
+  <section class="bookband" id="book">
+    <h2>Book a <em>table</em></h2>
+    <p>Directly with FIG &mdash; no booking apps in between, no commission to anyone.
+       Confirmed by a person, not an algorithm.</p>
+    <div class="rowline">
+      <input placeholder="Date" aria-label="Date">
+      <input placeholder="Time" aria-label="Time">
+      <input placeholder="Guests" aria-label="Guests">
+      <a class="btn solid" href="mailto:hello@harbourpages.com?subject=Table%20booking%20(FIG%20demo)">Reserve</a>
+    </div>
+    <div class="alt">Or ring us on <a href="tel:+35312108927">(01) 210 8927</a></div>
+  </section>
+
+  <footer>
+    <b>FIG &middot; George&rsquo;s Avenue, Blackrock</b>
+    <a href="https://harbourpages.com">Site by HarbourPages &mdash; take direct bookings &rarr;</a>
+    <div style="width:100%;font-size:11.5px;opacity:.7;line-height:1.6">Speculative preview by HarbourPages, built from public listings &mdash; not affiliated with or endorsed by FIG. Unlisted and hidden from search engines. If you&rsquo;d rather it wasn&rsquo;t here, one email takes it down the same day: hello@harbourpages.com</div>
+  </footer>
+
+</body>
+</html>

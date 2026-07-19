@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Demo site by HarbourPages — The Village Garden, Blackrock, Co. Louth. Coffee, flowers and gifts on Main Street. Order flowers and coffee directly, no apps in between.">
+  <title>The Village Garden — Blackrock, Co. Louth (HarbourPages demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* The Village Garden — a florist's counter inside a retro-warm café.
+       Greenhouse paper × fresh leaf green × dahlia pink; Instrument Serif + Outfit;
+       florist-tag labels, kraft photo wraps, dashed ticket rules, scalloped awning. */
+    :root{
+      --paper:#F7F5EC; --paper-deep:#EFEBDC; --kraft:#E7DFC8;
+      --moss:#25301C; --moss-deep:#1B2414;
+      --stem:#4C7443; --stem-deep:#3A5A33;
+      --dahlia:#C25B72; --dahlia-soft:#EFD3D8;
+      --quiet:#7A7A66; --line:#D9D5BF; --dash:#C5C0A6;
+      --disp:'Instrument Serif',Georgia,serif; --body:'Outfit',Verdana,sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--moss);font:400 16.5px/1.7 var(--body)}
+
+    /* ---------- awning ---------- */
+    .awning{background:var(--stem-deep);color:#DCE8D2;text-align:center;
+      font:500 10.5px/1 var(--body);letter-spacing:.26em;text-transform:uppercase;
+      padding:9px 14px}
+    .awning-fringe{height:9px;background-image:radial-gradient(11px 9px at 11px 0,var(--stem-deep) 8px,transparent 9px);
+      background-size:22px 9px;background-repeat:repeat-x}
+
+    /* ---------- nav ---------- */
+    nav{display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:20px 44px 18px}
+    .wordmark{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--moss)}
+    .wordmark svg{width:30px;height:38px;flex:none}
+    .wordmark .wm{font:400 27px/1.05 var(--disp);letter-spacing:.005em}
+    .wordmark small{display:block;font:600 9.5px var(--body);letter-spacing:.3em;
+      text-transform:uppercase;color:var(--stem);margin-top:3px}
+    .navlinks{display:flex;align-items:center;gap:24px}
+    .navlinks a.navlink{font:600 12.5px var(--body);letter-spacing:.12em;text-transform:uppercase;
+      color:var(--moss);text-decoration:none}
+    .navlinks a.navlink:hover{color:var(--stem)}
+    .navlinks a.navcta{font:600 12.5px var(--body);letter-spacing:.12em;text-transform:uppercase;
+      color:var(--paper);background:var(--dahlia);text-decoration:none;padding:12px 22px;
+      border-radius:3px}
+    .navlinks a.navcta:hover{background:#A94960}
+
+    /* ---------- florist tag label ---------- */
+    .tag{display:inline-block;font:600 11px var(--body);letter-spacing:.24em;
+      text-transform:uppercase;color:var(--stem-deep);background:var(--kraft);
+      border:1px solid var(--dash);border-radius:3px;padding:7px 14px 7px 24px;
+      position:relative;transform:rotate(-1.6deg)}
+    .tag::before{content:"";position:absolute;left:9px;top:50%;transform:translateY(-50%);
+      width:6px;height:6px;border-radius:50%;background:var(--paper);
+      border:1px solid var(--dash)}
+
+    /* ---------- hero ---------- */
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;
+      max-width:1140px;margin:0 auto;padding:54px 44px 66px}
+    .hero .tag{margin-bottom:20px}
+    h1{font:400 clamp(42px,5.8vw,70px)/1.06 var(--disp);letter-spacing:-.005em;margin:0 0 20px}
+    h1 em{font-style:italic;color:var(--stem)}
+    .hero p{max-width:34em;color:#4C5240;margin:0 0 12px}
+    .hero .stars{font:600 13px var(--body);letter-spacing:.16em;text-transform:uppercase;
+      color:var(--dahlia);margin:18px 0 0}
+    .btnrow{margin:26px 0 24px}
+    .btn{display:inline-block;font:600 13px var(--body);letter-spacing:.1em;
+      text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:3px}
+    .btn.solid{background:var(--stem);color:var(--paper)} .btn.solid:hover{background:var(--stem-deep)}
+    .btn.line{border:1.5px solid var(--stem);color:var(--stem-deep);margin-left:10px}
+    .stemnotes{display:flex;flex-wrap:wrap;gap:8px}
+    .stemnotes span{font:500 12px var(--body);letter-spacing:.05em;color:var(--stem-deep);
+      border:1px dashed var(--dash);border-radius:3px;padding:6px 13px;background:#F2F0E3}
+    /* wrapped-bouquet photo placeholder */
+    .wrap{background:var(--paper-deep);border:1px dashed var(--dash);min-height:430px;
+      position:relative;display:flex;align-items:center;justify-content:center;
+      text-align:center;padding:34px;color:var(--quiet);font:italic 400 14.5px var(--disp);
+      background-image:linear-gradient(135deg,var(--kraft) 0 44px,transparent 44px)}
+    .wrap .caption{position:absolute;left:16px;bottom:16px;transform:rotate(1.4deg)}
+
+    /* ---------- counter strip ---------- */
+    .counterstrip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;max-width:1140px;
+      margin:0 auto;padding:0 44px 74px}
+    .counterstrip .wrap{min-height:215px;padding:24px;font-size:13.5px}
+    .counterstrip .wrap .caption{display:none}
+
+    /* ---------- café menu ---------- */
+    .kitchen{background:#FCFBF4;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      padding:76px 24px}
+    .kitchen .inner{max-width:980px;margin:0 auto}
+    .kitchen h2{font:400 40px var(--disp);margin:14px 0 0}
+    .kitchen h2 em{font-style:italic;color:var(--dahlia)}
+    .hedge{color:var(--quiet);font-size:13.5px;margin:10px 0 42px;max-width:46em}
+    .courses{display:grid;grid-template-columns:1.25fr .75fr;gap:54px}
+    .coursehead{font:600 11.5px var(--body);letter-spacing:.28em;text-transform:uppercase;
+      color:var(--stem);border-bottom:2px solid var(--line);padding-bottom:10px;margin:0 0 4px}
+    .dishrow{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;
+      padding:14px 0;border-bottom:1px dashed var(--dash)}
+    .dishrow h3{margin:0;font:400 21px var(--disp);letter-spacing:.005em}
+    .dishrow p{margin:3px 0 0;color:#6E7460;font-size:13.5px}
+    .dishrow .price{font:400 19px var(--disp);color:var(--stem-deep);white-space:nowrap}
+
+    /* ---------- flowers ---------- */
+    .florals{max-width:1140px;margin:0 auto;padding:78px 44px 30px}
+    .florals h2{font:400 clamp(34px,4.2vw,46px)/1.12 var(--disp);margin:16px 0 0;max-width:15em}
+    .florals h2 em{font-style:italic;color:var(--stem)}
+    .floralgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:40px}
+    .stemcard{background:#FCFBF4;border:1px solid var(--line);border-radius:4px;
+      padding:28px 26px 24px;position:relative}
+    .stemcard::before{content:"";position:absolute;top:0;left:26px;right:26px;height:3px;
+      background:var(--dahlia);opacity:.55}
+    .stemcard h3{font:400 24px var(--disp);margin:0 0 8px}
+    .stemcard p{color:#5B6150;font-size:14.5px;margin:0 0 12px}
+    .stemcard .from{font:600 11.5px var(--body);letter-spacing:.18em;text-transform:uppercase;
+      color:var(--dahlia)}
+    .floralfoot{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:30px}
+    .floralfoot .note{font-size:13.5px;color:var(--quiet);max-width:34em}
+
+    /* ---------- kind words ---------- */
+    .kindnotes{max-width:1140px;margin:0 auto;padding:64px 44px 24px;text-align:left}
+    .kwgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:34px}
+    .kw{border:1px dashed var(--dash);border-radius:4px;padding:26px 26px 20px;background:var(--paper)}
+    .kw .q{font:italic 400 20px/1.45 var(--disp);margin:0 0 12px}
+    .kw .src{font:600 11px var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--quiet)}
+
+    /* ---------- hours + find us ---------- */
+    .visitgrid{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:22px;max-width:1140px;
+      margin:0 auto;padding:48px 44px 86px}
+    .cell{background:#FCFBF4;border:1px solid var(--line);border-radius:4px;padding:28px 26px}
+    .cell h3{font:600 11.5px var(--body);letter-spacing:.28em;text-transform:uppercase;
+      color:var(--stem);margin:0 0 16px}
+    .hrow{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;
+      padding:7px 0;border-bottom:1px dashed var(--dash)}
+    .hrow strong{font-weight:600;color:var(--stem-deep)}
+    .smallnote{font-size:12px;color:var(--quiet);margin-top:12px;line-height:1.6}
+    .cell a{color:var(--stem-deep)}
+    iframe.mapframe{width:100%;height:212px;border:1px solid var(--line);border-radius:4px;
+      display:block;filter:saturate(.8)}
+
+    /* ---------- order band ---------- */
+    .orderband{background:var(--moss-deep);color:var(--paper);text-align:center;padding:78px 24px}
+    .orderband h2{font:400 42px var(--disp);margin:0 0 12px}
+    .orderband h2 em{font-style:italic;color:var(--dahlia-soft)}
+    .orderband p{color:#B9C4AA;max-width:37em;margin:0 auto 30px;font-size:15px}
+    .orderband .btn.solid{background:var(--dahlia);color:#fff}
+    .orderband .btn.solid:hover{background:#A94960}
+    .orderband .alt{font-size:13.5px;color:#93A183;margin-top:18px}
+
+    /* ---------- footer ---------- */
+    footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+      background:var(--paper);color:var(--quiet);padding:28px 44px;font-size:13px;
+      border-top:1px solid var(--line)}
+    footer b{font:400 19px var(--disp);color:var(--moss)}
+    footer a{color:var(--stem-deep)}
+
+    /* ---------- responsive ---------- */
+    @media(max-width:940px){
+      .hero{grid-template-columns:1fr;gap:32px;padding-top:36px}
+      .wrap{min-height:300px}
+      .counterstrip,.floralgrid,.kwgrid,.visitgrid{grid-template-columns:1fr}
+      .courses{grid-template-columns:1fr;gap:34px}
+    }
+    @media(max-width:700px){
+      nav{flex-direction:column;padding:16px 18px 12px}
+      .navlinks{gap:8px 16px;flex-wrap:wrap;justify-content:center}
+      .hero,.counterstrip,.florals,.kindnotes,.visitgrid{padding-left:20px;padding-right:20px}
+      .kitchen{padding:60px 20px}
+      .btn.line{margin-left:0;margin-top:10px}
+      footer{padding:24px 20px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="awning">Cafe &middot; Flowers &middot; Gifts &mdash; Main Street, Blackrock, Co. Louth</div>
+  <div class="awning-fringe" aria-hidden="true"></div>
+
+  <nav>
+    <a class="wordmark" href="#top" aria-label="The Village Garden — home">
+      <svg viewBox="0 0 40 50" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 48 C20 34 20 22 20 12" stroke="#4C7443" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M20 30 C14 28 10 23 10 17 C16 18 20 23 20 30 Z" fill="#4C7443"/>
+        <path d="M20 24 C26 22 30 17 30 11 C24 12 20 17 20 24 Z" fill="#3A5A33"/>
+        <circle cx="20" cy="8" r="5.5" fill="#C25B72"/>
+        <circle cx="20" cy="8" r="2" fill="#F7F5EC"/>
+      </svg>
+      <span><span class="wm">The Village Garden</span><small>Blackrock &middot; Co. Louth</small></span>
+    </a>
+    <div class="navlinks">
+      <a class="navlink" href="#menu">Caf&eacute;</a>
+      <a class="navlink" href="#flowers">Flowers</a>
+      <a class="navlink" href="#hours">Hours</a>
+      <a class="navlink" href="#visit">Find us</a>
+      <a class="navcta" href="#order">Order flowers</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <span class="tag">Cafe &middot; Flowers &middot; Gifts</span>
+      <h1>Coffee at the counter, <em>stems in the window.</em></h1>
+      <p>A caf&eacute;, a flower counter and a shelf of good gifts, all under one roof on
+         Main Street &mdash; the kind of room people describe as retro, relaxed and
+         very hard to leave in a hurry.</p>
+      <p>Order your flowers straight from the shop &mdash; no marketplace, no middleman,
+         no commission on your bouquet.</p>
+      <div class="stars">4.7&#9733; &middot; Google reviews</div>
+      <div class="btnrow">
+        <a class="btn solid" href="#flowers">Flower orders</a>
+        <a class="btn line" href="#menu">See the caf&eacute; menu</a>
+      </div>
+      <div class="stemnotes">
+        <span>Dog-friendly</span><span>Outdoor tables</span><span>Takeaway coffee</span><span>Gifts to go</span>
+      </div>
+    </div>
+    <div class="wrap">[ photo &mdash; the shop front on Main Street, buckets of stems by the door ]
+      <span class="caption tag">Blackrock village</span>
+    </div>
+  </header>
+
+  <div class="counterstrip">
+    <div class="wrap">[ photo &mdash; the flower counter, Saturday morning ]</div>
+    <div class="wrap">[ photo &mdash; flat white &amp; coffee cake at the window seat ]</div>
+    <div class="wrap">[ photo &mdash; a hand-tied bouquet, wrapped in paper ]</div>
+  </div>
+
+  <section class="kitchen" id="menu">
+    <div class="inner">
+      <span class="tag">The caf&eacute;</span>
+      <h2>From the counter, <em>daily.</em></h2>
+      <div class="hedge">From your public listings &mdash; your live menu goes here, editable in a
+        minute. The dishes below are the ones your reviews mention; prices shown are samples.</div>
+      <div class="courses">
+        <div>
+          <h3 class="coursehead">Plates &amp; bowls</h3>
+          <div class="dishrow"><div><h3>Ham &amp; cheese toastie</h3>
+            <p>A counter classic &mdash; named in the reviews</p></div><div class="price">&euro;7.50</div></div>
+          <div class="dishrow"><div><h3>Chicken toastie</h3>
+            <p>The other one they mention</p></div><div class="price">&euro;8.00</div></div>
+          <div class="dishrow"><div><h3>A&ccedil;a&iacute; bowl</h3>
+            <p>Fruit, granola, the works</p></div><div class="price">&euro;9.50</div></div>
+          <div class="dishrow"><div><h3>Toast &amp; morning things</h3>
+            <p>Simple, done properly</p></div><div class="price">from &euro;4.50</div></div>
+        </div>
+        <div>
+          <h3 class="coursehead">Coffee &amp; bakes</h3>
+          <div class="dishrow"><div><h3>Coffee</h3>
+            <p>&ldquo;Great coffee&rdquo; &mdash; more than one reviewer</p></div><div class="price">from &euro;3.60</div></div>
+          <div class="dishrow"><div><h3>Coffee cake</h3>
+            <p>Praised by name in the reviews</p></div><div class="price">&euro;4.50</div></div>
+          <div class="dishrow"><div><h3>Pastries</h3>
+            <p>While the tray lasts</p></div><div class="price">&euro;3.80</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="florals" id="flowers">
+    <span class="tag">The flower counter</span>
+    <h2>Flowers, ordered <em>direct from the shop.</em></h2>
+    <div class="floralgrid">
+      <div class="stemcard">
+        <h3>Hand-tied bouquets</h3>
+        <p>Made up at the counter from what&rsquo;s fresh that week, wrapped in paper
+           and ready to travel.</p>
+        <div class="from">Sample &mdash; from &euro;35</div>
+      </div>
+      <div class="stemcard">
+        <h3>Occasions</h3>
+        <p>Birthdays, thank-yous, sympathy, Mother&rsquo;s Day &mdash; ordered ahead,
+           collected in the village or arranged for the day.</p>
+        <div class="from">Sample &mdash; from &euro;45</div>
+      </div>
+      <div class="stemcard">
+        <h3>Weekly flowers</h3>
+        <p>A standing order for a hallway, a caf&eacute; table or a front desk &mdash;
+           fresh stems on a day that suits.</p>
+        <div class="from">Sample &mdash; priced per week</div>
+      </div>
+    </div>
+    <div class="floralfoot">
+      <a class="btn solid" href="#order">Enquire about an order</a>
+      <div class="note">A sketch of the flower side, from your public listings &mdash; your real
+        arrangements, prices and lead times slot in here in a minute.</div>
+    </div>
+  </section>
+
+  <section class="kindnotes">
+    <span class="tag">Kind words</span>
+    <div class="kwgrid">
+      <div class="kw"><p class="q">&ldquo;No fuss, just good quality across the board.&rdquo;</p>
+        <div class="src">A Google reviewer</div></div>
+      <div class="kw"><p class="q">&ldquo;Great retro type decor. Great coffee and very
+        friendly staff.&rdquo;</p>
+        <div class="src">A Google reviewer</div></div>
+      <div class="kw"><p class="q">A calm, friendly room &mdash; the recurring theme across
+        your reviews.</p>
+        <div class="src">4.7&#9733; on Google</div></div>
+    </div>
+  </section>
+
+  <section class="visitgrid" id="hours">
+    <div class="cell">
+      <h3>Opening hours</h3>
+      <div class="hrow"><span>Monday &ndash; Saturday</span><strong>8:00 &ndash; 17:00</strong></div>
+      <div class="hrow"><span>Sunday</span><strong>9:00 &ndash; 16:00</strong></div>
+      <div class="smallnote">Hours from your public listings &mdash; corrected on day one.</div>
+    </div>
+    <div class="cell" id="visit">
+      <h3>Find us</h3>
+      <div class="hrow"><span>Address</span><strong>20 Main St</strong></div>
+      <div class="hrow"><span></span><strong>Haggardstown, Blackrock</strong></div>
+      <div class="hrow"><span></span><strong>Co. Louth, A91 W188</strong></div>
+      <div class="hrow"><span>Instagram</span><strong>@thevillagegardenblackrock</strong></div>
+      <div class="smallnote">On the village main street, a stroll from the seafront.
+        Phone number goes here on day one.</div>
+    </div>
+    <div class="cell">
+      <h3>Map</h3>
+      <iframe class="mapframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Map — The Village Garden, 20 Main St, Haggardstown, Blackrock, Co. Louth"
+        src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sThe+Village+Garden%2C+20+Main+St%2C+Haggardstown%2C+Blackrock%2C+Co.+Louth!6i16"></iframe>
+    </div>
+  </section>
+
+  <section class="orderband" id="order">
+    <h2>Order flowers, <em>get in touch.</em></h2>
+    <p>Straight to the shop &mdash; a person reads it, a person replies. Tell us the occasion,
+       the day you need them, and roughly what you&rsquo;d like to spend.</p>
+    <a class="btn solid" href="mailto:hello@harbourpages.com?subject=Flower%20order%20(The%20Village%20Garden%20demo)">Start a flower order</a>
+    <div class="alt">Caf&eacute; questions and gift enquiries welcome by the same door.</div>
+  </section>
+
+  <footer>
+    <b>The Village Garden &middot; Blackrock, Co. Louth</b>
+    <a href="https://harbourpages.com">Site by HarbourPages &mdash; take direct bookings &rarr;</a>
+    <div style="width:100%;font-size:11.5px;opacity:.7;line-height:1.6">Speculative preview by HarbourPages, built from public listings &mdash; not affiliated with or endorsed by The Village Garden. Unlisted and hidden from search engines. If you&rsquo;d rather it wasn&rsquo;t here, one email takes it down the same day: hello@harbourpages.com</div>
+  </footer>
+
+</body>
+</html>

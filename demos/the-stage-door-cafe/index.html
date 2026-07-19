@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Demo site by HarbourPages — The Stage Door Cafe, Temple Bar. All-day breakfast on Essex Street East, doors at 6am. Menu, hours and directions — no apps in between.">
+  <title>The Stage Door Cafe — Temple Bar (HarbourPages demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* The Stage Door Cafe — the playbill caff: printed theatre programme × Temple Bar greasy spoon */
+    :root{
+      --paper:#FAF7F0; --panel:#F1EBDF; --white:#FFFDF8;
+      --ink:#1A1511; --faint:#6F6558; --rule:#D9D1C1;
+      --crimson:#A8232C; --curtain:#821820; --curtain-deep:#5C0F16; --brass:#C09135;
+      --disp:'Abril Fatface',Georgia,serif; --body:'Karla',Verdana,sans-serif;
+      --tick:'Courier Prime','Courier New',monospace;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:400 16.5px/1.7 var(--body)}
+    a{color:var(--crimson)}
+
+    /* nav — heavy playbill rule underneath */
+    nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 20px;
+      padding:16px 34px;background:var(--paper);border-bottom:3px solid var(--ink);
+      position:sticky;top:0;z-index:6}
+    .wordmark{font:400 21px/1.1 var(--disp);color:var(--ink)}
+    .wordmark small{display:block;font:400 10.5px var(--tick);letter-spacing:.28em;
+      text-transform:uppercase;color:var(--crimson);margin-top:3px}
+    .navlinks{display:flex;align-items:center;flex-wrap:wrap;gap:10px 22px}
+    .navlinks a{font:700 12px var(--body);letter-spacing:.18em;text-transform:uppercase;
+      color:var(--ink);text-decoration:none}
+    .navlinks a:hover{color:var(--crimson)}
+    .navlinks a.navcta{background:var(--crimson);color:var(--paper);padding:11px 20px}
+    .navlinks a.navcta:hover{background:var(--curtain);color:var(--paper)}
+
+    /* hero — centred playbill stack framed by thick-and-thin rules */
+    .playbill{max-width:900px;margin:0 auto;padding:40px 28px 0;text-align:center}
+    .rulepair{border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);height:7px}
+    .rulepair.flip{border-top-width:1px;border-bottom-width:3px}
+    .playbill .inner{padding:44px 8px 40px}
+    .kick{font:400 12.5px var(--tick);letter-spacing:.3em;text-transform:uppercase;color:var(--crimson)}
+    h1{font:400 clamp(42px,7vw,84px)/1.06 var(--disp);margin:20px auto 20px;max-width:11em;
+      font-weight:400}
+    h1 em{font-style:normal;color:var(--crimson)}
+    .playbill p.lede{max-width:36em;margin:0 auto;color:var(--faint);font-size:17px}
+    .meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:26px;
+      font:700 12px var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+    .meta .star{color:var(--brass);font-weight:400}
+    .btnrow{margin-top:32px}
+    .btn{display:inline-block;font:700 12.5px var(--body);letter-spacing:.18em;text-transform:uppercase;
+      text-decoration:none;padding:15px 28px}
+    .btn.solid{background:var(--crimson);color:var(--paper)} .btn.solid:hover{background:var(--curtain)}
+    .btn.ghost{border:2px solid var(--ink);color:var(--ink);margin-left:10px}
+    .btn.ghost:hover{border-color:var(--crimson);color:var(--crimson)}
+
+    /* marquee board — NOW SERVING */
+    .marquee{max-width:1040px;margin:44px auto 0;padding:0 28px}
+    .marqueebox{border:3px solid var(--ink);background:var(--white)}
+    .bulbs{height:16px;background-color:var(--curtain-deep);
+      background-image:radial-gradient(circle at 50% 50%,var(--brass) 3px,rgba(192,145,53,.25) 4px,transparent 5px);
+      background-size:24px 16px;border-bottom:3px solid var(--ink)}
+    .marqueegrid{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;
+      padding:26px 32px}
+    .marqueegrid .now{font:400 34px/1 var(--disp);color:var(--crimson);text-transform:uppercase}
+    .marqueegrid .act{font:700 17px var(--body);letter-spacing:.04em}
+    .marqueegrid .act small{display:block;font:400 14px var(--body);letter-spacing:0;
+      color:var(--faint);margin-top:5px;font-weight:400}
+    .marqueegrid .times{font:700 13px var(--tick);letter-spacing:.12em;text-transform:uppercase;
+      text-align:right;color:var(--ink)}
+
+    /* photo strip */
+    .photos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:1040px;
+      margin:0 auto;padding:44px 28px 56px}
+    .ph{background:var(--panel);border:1px solid var(--rule);min-height:230px;
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;
+      color:var(--faint);font:italic 400 13px var(--tick)}
+
+    /* section headers — act plates */
+    .acthead{max-width:900px;margin:0 auto;text-align:center;padding:54px 28px 8px}
+    .acthead .actno{font:400 12px var(--tick);letter-spacing:.34em;text-transform:uppercase;
+      color:var(--faint)}
+    .acthead h2{font:400 clamp(30px,4.2vw,44px)/1.15 var(--disp);margin:10px 0 0}
+    .acthead .starsep{color:var(--brass);font-size:15px;letter-spacing:.6em;margin-top:14px}
+
+    /* menu — the programme */
+    .bill{max-width:960px;margin:0 auto;padding:10px 32px 26px}
+    .hedge{text-align:center;font:italic 400 14px var(--tick);color:var(--faint);margin:0 0 34px}
+    .courses{display:grid;grid-template-columns:1fr 1fr;gap:10px 60px}
+    .course h3{font:700 13px var(--tick);letter-spacing:.26em;text-transform:uppercase;
+      color:var(--crimson);border-bottom:2px solid var(--ink);padding-bottom:9px;margin:28px 0 6px}
+    .dish{display:flex;align-items:baseline;gap:12px;padding:12px 0}
+    .dish .nm{font:700 16.5px var(--body)}
+    .dish .nm small{display:block;font:400 14px var(--body);color:var(--faint);font-weight:400;
+      margin-top:2px}
+    .dish .sp{flex:1}
+    .dish .pr{font:400 19px var(--disp);color:var(--crimson);white-space:nowrap}
+    .housenote{border:1.5px solid var(--ink);background:var(--white);padding:18px 22px;
+      font-size:14.5px;color:var(--faint);margin-top:30px}
+    .housenote b{color:var(--ink)}
+
+    /* the name — story band */
+    .greenroom{background:var(--panel);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);
+      margin-top:56px}
+    .greenroom .inner{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;
+      gap:48px;padding:56px 32px 62px;align-items:center}
+    .greenroom h2{font:400 clamp(28px,3.8vw,40px)/1.18 var(--disp);margin:0 0 18px}
+    .greenroom h2 em{font-style:normal;color:var(--crimson)}
+    .greenroom p{color:#55493B;margin:0 0 15px}
+    .greenroom p b{color:var(--ink)}
+    .greenroom .postscript{font:italic 400 13px var(--tick);color:var(--faint)}
+    .greenroom .ph{min-height:320px;background:var(--paper)}
+
+    /* hours + find us — ticket stubs */
+    .stubs{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;
+      gap:18px;padding:16px 28px 64px}
+    .stub{background:var(--white);border:1.5px solid var(--ink);padding:24px 24px 26px;
+      position:relative}
+    .stub h3{font:700 12.5px var(--tick);letter-spacing:.28em;text-transform:uppercase;
+      color:var(--crimson);margin:0 0 6px}
+    .stub .admit{font:400 10.5px var(--tick);letter-spacing:.2em;text-transform:uppercase;
+      color:var(--faint);border-bottom:1px dashed var(--rule);padding-bottom:12px;margin-bottom:14px}
+    .stubrow{display:flex;justify-content:space-between;gap:14px;font:400 14.5px var(--tick);
+      padding:5px 0}
+    .stubrow span:first-child{color:var(--faint)}
+    .stub .small{font-size:12.5px;color:var(--faint);margin-top:14px;line-height:1.6}
+    .stub iframe{width:100%;height:210px;border:1px solid var(--rule);display:block;
+      filter:sepia(.14) saturate(.85)}
+
+    /* curtain call — dark closing band */
+    .curtaincall{background:var(--curtain);color:var(--paper);text-align:center;
+      border-top:3px solid var(--ink)}
+    .curtaincall .bulbs{border-bottom:none;background-color:var(--curtain-deep)}
+    .curtaincall .inner{max-width:720px;margin:0 auto;padding:56px 28px 64px}
+    .curtaincall h2{font:400 clamp(30px,4.4vw,44px)/1.15 var(--disp);margin:0 0 14px}
+    .curtaincall p{color:#EAC9C4;margin:0 auto 10px;max-width:34em}
+    .curtaincall .fineprint{font:italic 400 13px var(--tick);color:#D9A9A3;margin-bottom:30px}
+    .btn.light{background:var(--paper);color:var(--ink)}
+    .btn.light:hover{background:var(--white)}
+
+    /* footer */
+    footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+      padding:26px 34px;color:var(--faint);font-size:13.5px}
+    footer b{font:400 15px var(--disp);color:var(--ink);letter-spacing:.02em}
+    footer a{color:var(--crimson)}
+
+    @media(max-width:900px){
+      .photos,.courses,.stubs{grid-template-columns:1fr}
+      .greenroom .inner{grid-template-columns:1fr;gap:26px}
+      .marqueegrid{grid-template-columns:1fr;gap:12px;text-align:left}
+      .marqueegrid .times{text-align:left}
+      nav{justify-content:center;text-align:center;padding:14px 16px}
+      .navlinks{justify-content:center;gap:8px 16px}
+      .playbill{padding:28px 18px 0}
+      .playbill .inner{padding:36px 4px 34px}
+      .btn.ghost{margin-left:0;margin-top:10px}
+      .photos{padding:36px 18px 44px}
+      .bill{padding:10px 22px 26px}
+      .stubs{padding:16px 18px 52px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wordmark">The Stage Door Cafe<small>Essex St E &middot; Temple Bar &middot; Dublin 2</small></div>
+    <div class="navlinks">
+      <a href="#menu">The menu</a><a href="#thename">The name</a><a href="#findus">Hours &amp; find us</a>
+      <a class="navcta" href="#enquiries">Plan a visit</a>
+    </div>
+  </nav>
+
+  <header class="playbill">
+    <div class="rulepair" aria-hidden="true"></div>
+    <div class="inner">
+      <div class="kick">Temple Bar &middot; Dublin 2 &mdash; doors at 6, daily</div>
+      <h1>The full Irish, with a <em>side of theatre.</em></h1>
+      <p class="lede">A tiny caff on Essex Street East &mdash; posters floor to ceiling, rashers on
+         the pan from six in the morning, and the quickest wit in Temple Bar behind the counter.
+         No bookings, no fuss: walk in, join the queue, and the reviews say it moves faster
+         than it looks.</p>
+      <div class="meta">
+        <span><span class="star">&#9733;</span> 4.7 &middot; 1,765 Google reviews</span>
+        <span><span class="star">&#10038;</span> TripAdvisor Travellers&rsquo; Choice 2025</span>
+        <span><span class="star">&#10038;</span> All-day breakfast till close</span>
+      </div>
+      <div class="btnrow">
+        <a class="btn solid" href="#menu">See the menu</a>
+        <a class="btn ghost" href="#findus">Find the door</a>
+      </div>
+    </div>
+    <div class="rulepair flip" aria-hidden="true"></div>
+  </header>
+
+  <div class="marquee">
+    <div class="marqueebox">
+      <div class="bulbs" aria-hidden="true"></div>
+      <div class="marqueegrid">
+        <div class="now">Now serving</div>
+        <div class="act">The Full Irish &mdash; the headliner
+          <small>More than one review calls it the best breakfast in Dublin &mdash; their words,
+          straight from your public listings. There&rsquo;s usually a queue; the same reviews say
+          it&rsquo;s worth it.</small></div>
+        <div class="times">From 6am<br>daily &middot; till close</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="photos">
+    <div class="ph">[ photo &mdash; the full Irish, table by the window ]</div>
+    <div class="ph">[ photo &mdash; the counter, posters floor to ceiling ]</div>
+    <div class="ph">[ photo &mdash; the outside tables, Essex Street waking up ]</div>
+  </div>
+
+  <div class="acthead" id="menu">
+    <div class="actno">Act I</div>
+    <h2>The Programme</h2>
+    <div class="starsep" aria-hidden="true">&#10038; &#10038; &#10038;</div>
+  </div>
+  <section class="bill">
+    <div class="hedge">From your public listings &mdash; your live menu goes here, editable in a minute. Prices shown are samples.</div>
+    <div class="courses">
+      <div class="course">
+        <h3>The Headliner</h3>
+        <div class="dish"><div class="nm">The Full Irish<small>rashers, sausages, black &amp; white pudding, eggs any way, beans, grilled tomato, soda bread</small></div><div class="sp"></div><div class="pr">&euro;14.50</div></div>
+        <div class="dish"><div class="nm">The Half Irish<small>same cast, shorter run &mdash; for smaller appetites</small></div><div class="sp"></div><div class="pr">&euro;11.00</div></div>
+        <h3>Supporting Cast</h3>
+        <div class="dish"><div class="nm">Cheese omelette<small>three eggs, toast &mdash; a regulars&rsquo; pick in your reviews</small></div><div class="sp"></div><div class="pr">&euro;9.50</div></div>
+        <div class="dish"><div class="nm">BLT<small>on thick-cut toast</small></div><div class="sp"></div><div class="pr">&euro;8.50</div></div>
+        <div class="dish"><div class="nm">Veggie breakfast<small>the full performance, minus the meat</small></div><div class="sp"></div><div class="pr">&euro;12.50</div></div>
+      </div>
+      <div class="course">
+        <h3>Intermission &mdash; from the machine</h3>
+        <div class="dish"><div class="nm">Irish coffee<small>the one whole review titles are written about</small></div><div class="sp"></div><div class="pr">&euro;7.00</div></div>
+        <div class="dish"><div class="nm">Hot chocolate<small>piled with marshmallows &mdash; a recurring review tip</small></div><div class="sp"></div><div class="pr">&euro;4.50</div></div>
+        <div class="dish"><div class="nm">Cappuccino<small>proper, no ceremony</small></div><div class="sp"></div><div class="pr">&euro;3.80</div></div>
+        <div class="dish"><div class="nm">Irish breakfast tea<small>by the pot</small></div><div class="sp"></div><div class="pr">&euro;2.80</div></div>
+        <div class="housenote"><b>House notes:</b> vegetarian, vegan and gluten-free options are
+          flagged on your TripAdvisor listing &mdash; we&rsquo;d list the real ones here. A few
+          tables outside for the people-watching, weather permitting.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="greenroom" id="thename">
+    <div class="inner">
+      <div>
+        <h2>Why <em>&ldquo;Stage Door&rdquo;</em>?</h2>
+        <p>Because you&rsquo;re on <b>Dublin&rsquo;s theatre street</b>. Project Arts Centre is a
+           few doors down Essex Street East, Smock Alley Theatre &mdash; first opened in 1662 &mdash;
+           is around the corner, and the Olympia is up on Dame Street. The stage doors of Temple
+           Bar have always needed somewhere for breakfast.</p>
+        <p>Inside, the walls are covered <b>floor to ceiling in theatre and film memorabilia</b>,
+           most of it hunted out of charity shops &mdash; and the name over the door reads
+           <b>Al&rsquo;s</b>, because Alan works the room. He gets name-checked in your reviews
+           nearly as often as the rashers.</p>
+        <p class="postscript">That&rsquo;s the story as your public listings and 1,700-odd reviews
+           tell it. If we&rsquo;ve got any of it wrong, it&rsquo;s fixed in a minute.</p>
+      </div>
+      <div class="ph">[ photo &mdash; the wall of posters, every inch covered ]</div>
+    </div>
+  </section>
+
+  <div class="acthead" id="findus">
+    <div class="actno">Act II</div>
+    <h2>Hours &amp; Find Us</h2>
+    <div class="starsep" aria-hidden="true">&#10038; &#10038; &#10038;</div>
+  </div>
+  <section class="stubs">
+    <div class="stub">
+      <h3>Hours</h3>
+      <div class="admit">Admit one &mdash; no ticket needed</div>
+      <div class="stubrow"><span>Mon &ndash; Sun</span><span>6:00 &ndash; 15:00</span></div>
+      <div class="small">Hours from your public listings &mdash; corrected on day one.
+        (One listing says Saturdays run later; you&rsquo;d know &mdash; we&rsquo;ll print
+        whatever&rsquo;s true.)</div>
+    </div>
+    <div class="stub">
+      <h3>Find us</h3>
+      <div class="admit">Just off the main square</div>
+      <div class="stubrow"><span>Where</span><span>11 Essex St E, Temple Bar</span></div>
+      <div class="stubrow"><span>City</span><span>Dublin 2</span></div>
+      <div class="stubrow"><span>Look for</span><span>the queue, opposite Bad Bob&rsquo;s</span></div>
+      <div class="stubrow"><span>Instagram</span><span>@stagedoorcafetemplebar</span></div>
+      <div class="small">Walk-ins only &mdash; it&rsquo;s a small room, and that&rsquo;s half
+        the charm.</div>
+    </div>
+    <div class="stub">
+      <h3>Map</h3>
+      <div class="admit">Two minutes from Smock Alley</div>
+      <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Map — The Stage Door Cafe, 11 Essex St E, Temple Bar, Dublin 2"
+        src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sThe+Stage+Door+Cafe,+11+Essex+St+E,+Temple+Bar,+Dublin+2!6i16"></iframe>
+    </div>
+  </section>
+
+  <section class="curtaincall" id="enquiries">
+    <div class="bulbs" aria-hidden="true"></div>
+    <div class="inner">
+      <h2>Planning a visit?</h2>
+      <p>There&rsquo;s no booking a table here &mdash; it&rsquo;s first come, first fed, and the
+         queue is part of the show. But if you&rsquo;re bringing a group in for breakfast, timing
+         a visit before an early flight, or have any other question, send a note.</p>
+      <p class="fineprint">On the live site this lands straight in the caf&eacute;&rsquo;s own inbox.</p>
+      <a class="btn light" href="mailto:hello@harbourpages.com?subject=Enquiry%20(The%20Stage%20Door%20Cafe%20demo)">Send an enquiry</a>
+    </div>
+  </section>
+
+  <footer>
+    <b>The Stage Door Cafe &middot; Temple Bar</b>
+    <a href="https://harbourpages.com">Site by HarbourPages &mdash; take direct bookings &rarr;</a>
+    <div style="width:100%;font-size:11.5px;opacity:.7;line-height:1.6">Speculative preview by HarbourPages, built from public listings &mdash; not affiliated with or endorsed by The Stage Door Cafe. Unlisted and hidden from search engines. If you&rsquo;d rather it wasn&rsquo;t here, one email takes it down the same day: hello@harbourpages.com</div>
+  </footer>
+
+</body>
+</html>
